@@ -98,19 +98,6 @@ export default defineConfig({
 						},
 					],
 				},
-				{
-					label: '使用手册',
-					items: [
-						{
-							label: '工作流',
-							link: '/workflows',
-						},
-						{
-							label: '知识库',
-							link: '/knowledge-base',
-						},
-					],
-				},
 			],
 			plugins: [
 				starlightLinksValidator({
