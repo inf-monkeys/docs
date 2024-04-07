@@ -77,7 +77,7 @@ export default defineConfig({
 					items: [
 						{
 							label: 'Helm chart 部署',
-							link: '/installation/helm'
+							link: '/installation/helm',
 						},
 						{
 							label: '本地源码启动',
@@ -86,17 +86,17 @@ export default defineConfig({
 					],
 				},
 				{
-					label: "应用示例",
+					label: '应用示例',
 					items: [
 						{
-							label: "知识库问答机器人（RAG）",
-							link: "/showcases/qabot-based-on-knowledgebase"
+							label: '知识库问答机器人（RAG）',
+							link: '/showcases/qabot-based-on-knowledgebase',
 						},
 						{
-							label: "微信舔狗🐶机器人🤡",
-							link: "/showcases/simp-dog-wechatbot-simulator"
-						}
-					]
+							label: '微信舔狗🐶机器人🤡',
+							link: '/showcases/simp-dog-wechatbot-simulator',
+						},
+					],
 				},
 				{
 					label: '使用手册',
@@ -110,7 +110,7 @@ export default defineConfig({
 							link: '/knowledge-base',
 						},
 					],
-				}
+				},
 			],
 			plugins: [
 				starlightLinksValidator({
@@ -121,4 +121,7 @@ export default defineConfig({
 		}),
 		tailwind({ applyBaseStyles: false }),
 	],
+	image: {
+		service: passthroughImageService(),
+	},
 });
