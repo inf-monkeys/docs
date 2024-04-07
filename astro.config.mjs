@@ -45,7 +45,7 @@ export default defineConfig({
 			],
 			customCss: ['src/tailwind.css', 'src/styles/landing.css', '@fontsource-variable/figtree'],
 			social: {
-				github: 'https://github.com/monkeys/monkeys',
+				github: 'https://github.com/inf-monkeys/monkeys',
 			},
 			defaultLocale: 'root',
 			locales,
