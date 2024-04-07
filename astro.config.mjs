@@ -85,7 +85,20 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '手册',
+					label: "应用示例",
+					items: [
+						{
+							label: "知识库问答机器人（RAG）",
+							link: "/showcases/qabot-based-on-knowledgebase"
+						},
+						{
+							label: "微信舔狗🐶机器人🤡",
+							link: "/showcases/simp-dog-wechatbot-simulator"
+						}
+					]
+				},
+				{
+					label: '使用手册',
 					items: [
 						{
 							label: '工作流',

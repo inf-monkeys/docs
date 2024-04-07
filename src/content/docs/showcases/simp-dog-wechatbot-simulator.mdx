@@ -1,0 +1,57 @@
+---
+title: 微信舔狗🐶机器人🤡
+description: 微信舔狗🐶机器人🤡
+---
+
+## 应用依赖
+
+此应用依赖以下组件：
+
+| Package                                                                                    | 描述                 | 安装指引                                                                                                           |
+| ------------------------------------------------------------------------------------------ | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Monkeys 核心组件](https://github.com/inf-monkeys/monkeys)|  Monkeys 核心组件，运行此应用的必要依赖。 | 你可以使用 [Monkeys Cloud](https://ai.infmonkeys.com) 版本，或者查看[本地安装手册](/installation)。  |
+| [monkey-tools-wechaty](https://github.com/inf-monkeys/monkey-tools-wechaty)| Monkeys Wechaty 工具，基于 [wechaty](https://github.com/wechaty/wechaty) 的封装，借助此工具可以接收、发送微信消息。  | 请查看 [monkey-tools-wechaty](https://github.com/inf-monkeys/monkey-tools-wechaty) 的安装指引 |
+
+## 视频演示
+
+## 详细步骤
+
+### 第一步: 在控制台导入 Wechaty 工具
+
+在启动了 monkey-tools-wechaty 项目之后，在 Monkeys 控制台导入：
+
+> 在这个例子中 Manifest json 的地址为 https://localhost:3009/manifest.json
+
+![](~/assets/showcases/simp-dog/import-monkey-tools-wechaty.png)
+
+### 第二步：创建工作流，并设置触发器类型为微信消息
+
+在**开始节点**创建一个类型为**微信消息**的触发器：
+
+![](~/assets/showcases/simp-dog/create-trigger.png)
+
+按照指示扫码完成登录，设置消息类型为 Text（文本消息）、消息发送人昵称设置为你的女神 🤡：
+
+![](~/assets/showcases/simp-dog/trigger-config.png)
+
+### 第三步：添加文本生成（GPT）节点
+
+在这里，我们设置 Prompt 为：
+
+```text
+我是一名舔狗，正在追求一名女生,请根据我提供的信息为我分析她说话的含义，并生成回复，要求舔得有分寸、让对方舒服。如果你不清楚对方在说什么，就回复“嗯捏，好的好的，我知道啦，真棒👍”。不要在回复中添加无意义的内容，从而让别人感知到你是一个机器人。
+
+女神的消息：${workflow.input.msgContent}
+
+你的回复：
+
+```
+
+![](~/assets/showcases/simp-dog/example-prompt.png)
+
+### 第四步：在微信在进行测试
+
+大功告成，舔狗🐶机器人已上线🤡，快去追你的女神吧！
+
+![](~/assets/showcases/simp-dog/wechat-test.png)
+
