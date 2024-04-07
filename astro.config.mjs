@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import tailwind from '@astrojs/tailwind';
@@ -25,8 +25,7 @@ export default defineConfig({
 				themes: ['dark-plus', 'github-light'],
 			},
 			logo: {
-				light: 'src/assets/favicon.png',
-				dark: 'src/assets/favicon.png',
+				src: 'src/assets/favicon.png',
 			},
 			title: 'Monkeys',
 			editLink: {
@@ -109,6 +108,7 @@ export default defineConfig({
 		tailwind({ applyBaseStyles: false }),
 	],
 	image: {
-		service: passthroughImageService(),
+		// service: passthroughImageService(),
+		remotePatterns: [{ protocol: "https" }],
 	},
 });
