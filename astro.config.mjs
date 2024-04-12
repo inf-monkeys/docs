@@ -95,8 +95,25 @@ export default defineConfig({
 							label: '微信舔狗🐶机器人🤡',
 							link: '/showcases/simp-dog-wechatbot-simulator',
 						},
+						{
+							label: '使用 ComfyUI 流程画图并自动发送小红书',
+							link: '/showcases/comfyui-xiaohongshu-pipeline'
+						},
+						{
+							label: '小红书读书笔记全自动机器人',
+							link: '/showcases/xiaohongshu-book-bot'
+						}
 					],
 				},
+				{
+					label: '开发自定义 Tools',
+					items: [
+						{
+							label: '简介',
+							link: '/build-tools/introduction',
+						},
+					],
+				}
 			],
 			plugins: [
 				starlightLinksValidator({
