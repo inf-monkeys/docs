@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 
 const site = 'https://inf-monkeys.github.io';
 const locales = {
-	root: {
+	en: {
 		label: 'English',
 		lang: 'en',
 	},
@@ -47,7 +47,7 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/inf-monkeys/monkeys',
 			},
-			defaultLocale: 'root',
+			defaultLocale: 'zh-cn',
 			locales,
 			sidebar: [
 				{

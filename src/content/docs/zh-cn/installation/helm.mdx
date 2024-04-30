@@ -1,0 +1,92 @@
+---
+title: 使用 Helm Chart 一键安装
+description: 使用 Helm Chart 一键安装
+---
+
+## 部署架构图
+
+![](~/assets/installation/helm-architecture.png)
+
+## 资源清单
+
+### Helm Chart 编排文件
+
+> 提供压缩包版和在线 GitHub 版。压缩包版用于在离线环境下部署，但是更新时间可能不及时。
+
+| 类型     | 更新时间 | 链接                                                                                                                                         |
+| -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| 在线版   | -        | [https://github.com/inf-monkeys/monkeys-cloud](https://github.com/inf-monkeys/monkeys-cloud)                                                 |
+| 压缩包版 | 240429   | [https://static.infmonkeys.com/docker/helm/monkeys-helm-240429.tar.gz](https://static.infmonkeys.com/docker/helm/monkeys-helm-240429.tar.gz) |
+
+### Docker 镜像地址
+
+> 提供压缩包版和在线 Docker Hub 版。压缩包版用于在离线环境下部署，但是更新时间可能不及时。
+
+| 服务名称                    | 镜像名称                               | DockerHub 地址                                                  | OSS 下载地址                                                                                                    |
+| --------------------------- | -------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| monkeys                     | infmonkeys/monkeys                     | https://hub.docker.com/r/infmonkeys/monkeys                     | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-0.0.26.zip                                         |
+| monkeys-ui                  | infmonkeys/monkeys-ui                  | https://hub.docker.com/r/infmonkeys/monkeys-ui                  | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-0.0.26.zip                                   |
+| conductor                   | infmonkeys/conductor                   | https://hub.docker.com/r/infmonkeys/conductor                   | https://static.infmonkeys.com/docker/monkeys/conductor/conductor-1.0.0.zip                                      |
+| monkey-tools-sandbox        | infmonkeys/monkey-tools-sandbox        | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox        | https://static.infmonkeys.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-0.0.2.zip                |
+| monkey-tools-knowledge-base | infmonkeys/monkey-tools-knowledge-base | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base | https://static.infmonkeys.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-0.0.12.zip |
+| nginx                       | nginx                                  | https://hub.docker.com/_/nginx                                  | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                                          |
+| piston（Python 沙箱）       | ghcr.io/engineer-man/piston            | https://github.com/engineer-man/piston/pkgs/container/piston    | https://static.infmonkeys.com/docker/opensource/piston/piston-latest.zip                                        |
+
+### Python 沙箱（可选）
+
+> 用于在离线环境下部署 Python Runtime，如果为在线环境，或者不需要用到 Python 自定义代码功能，可以忽略。
+
+| 版本号 | 下载地址                                                                 |
+| ------ | ------------------------------------------------------------------------ |
+| 3.10.0 | https://static.infmonkeys.com/docker/monkeys/piston/python-3.10.0.tar.gz |
+
+
+## 部署文档
+
+### Step 1：部署 core
+
+> Core 组件包含 monkeys, monkeys-ui, conductor，用于提供核心工作流能力以及 OpenAI 兼容的大语言模型接口。
+
+详细文档请见：https://github.com/inf-monkeys/monkeys-cloud/blob/main/README_zh.md
+
+配置项列表：https://github.com/inf-monkeys/monkeys-cloud/blob/main/CONFIGURATION_zh.md
+
+备注：
+- 会使用 nginx 作为反向代理，将请求路由到 monkeys 前后端，使用 monkeys-proxy svc 对外提供服务。
+- 在 `Values.yaml` 的 `server.models` 指定大语言模型的地址。
+
+### Step 2：部署 tools
+
+> 在 Monkeys 的设计架构中，tools 为可插拔式组件，用于提供不同的功能，例如：沙箱工具、知识库工具、图像处理工具等等。你可以阅读[此文档](/docs/zh-cn/build-tools/introduction)了解为何开发自定义 tools
+
+每个 Tools 的详细部署文档请见: [https://github.com/inf-monkeys/monkeys-cloud/tree/main/helm/charts/community/tools](https://github.com/inf-monkeys/monkeys-cloud/tree/main/helm/charts/community/tools)
+
+### Step 3: 在 Monkeys 控制台导入上述部署的 tools
+
+- 进入控制台，此时需要初始化一个账号，可输入任意一个邮箱即可。
+- 在**执行类工具**页面，点击右上角的**导入**按钮，分别输入 tools 的 manifest 地址（格式为 `http://对应SERVICE地址:SERVICE_PORT/manifest.json`）
+
+![](~/assets/installation/import-tool.png)
+
+### Step 4: 验证功能是否可用
+
+- 每个团队下面会内置两个默认工作流：
+  - 大语言模型多轮对话
+  - 大语言模型单轮对话
+
+![](~/assets/installation/default-workflow.png)
+
+- 进入工作流详情
+  - 选择一个模型
+  - 可配置知识库上下文（可选）
+
+![](~/assets/installation/config-model.png)
+
+- 点击右上角的集成中心，可以看到 API 使用文档
+
+![](~/assets/installation/api-doc.png)
+
+- 复制到命令行终端，执行：
+  - 运行成功说明功能正常
+
+![](~/assets/installation/run-in-terminal.png)
