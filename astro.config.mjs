@@ -195,13 +195,25 @@ export default defineConfig({
 						]
 					},
 				{
-					"label": "集群",
-					"items": [
+						"label": "集群",
+						"items": [
 						{
 						"label": "构建云原生集群",
-						"link": "/cluster/cluster"
+						"link": "/cluster/building-cloud-native-cluster"
+						},
+						{
+						"label": "Helm 部署和更新",
+						"link": "/cluster/helm-deploy-update"
+						},
+						{
+						"label": "多副本负载均衡",
+						"link": "/cluster/multiple-replica-load-balancing"
+						},
+						{
+						"label": "多副本弹性扩容",
+						"link": "/cluster/multiple-replica-elastic-expansion"
 						}
-					]
+						]
 				},
 				{
 					"label": "算力",
