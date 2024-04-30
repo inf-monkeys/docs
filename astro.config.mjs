@@ -51,9 +51,6 @@ export default defineConfig({
 			locales,
 			sidebar: [
 				{
-					"label": "目录",
-					"items": [
-					{
 					"label": "快速开始",
 					"items": [
 					{
@@ -144,8 +141,6 @@ export default defineConfig({
 					"label": "扩展阅读",
 					"link": "/further-reading"
 					}
-					]
-				}
 			],
 			plugins: [
 				starlightLinksValidator({
