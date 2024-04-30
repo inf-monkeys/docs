@@ -67,7 +67,7 @@ export default defineConfig({
 					"label": "核心理念",
 					"items": [
 						{
-						"label": "大模型应用现状",
+						"label": "大模型应用生命周期",
 						"link": "/core-concepts/application-status"
 						},
 						{
@@ -76,7 +76,7 @@ export default defineConfig({
 						},
 						{
 						"label": "流程驱动",
-						"link": "/core-concepts/process-driven"
+						"link": "/core-concepts/flow-driven"
 						},
 						{
 						"label": "持续迭代",
