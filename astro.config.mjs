@@ -99,15 +99,48 @@ export default defineConfig({
 				},
 				{
 					"label": "应用",
-					"link": "/application"
+					"items": [
+						{
+						"label": "应用构建",
+						"link": "/applications/application-building"
+						},
+						{
+						"label": "应用集成",
+						"link": "/applications/application-integration"
+						},
+						{
+						"label": "应用可观测性",
+						"link": "/applications/application-observability"
+						},
+						{
+						"label": "应用智能",
+						"link": "/applications/application-intelligence"
+						},
+						{
+						"label": "典型应用示例",
+						"link": "/applications/application-examples"
+						}
+					]
 				},
 				{
 					"label": "流程",
 					"items": [
 						{
-						"label": "流程 Schema",
+						"label": "流程声明式语法",
 						"link": "/flow/flow-schema"
 						},
+						{
+						"label": "流程可视化配置",
+						"link": "/flow/visualization-configuration"
+						},
+						{
+						"label": "流程控制",
+						"link": "/flow/flow-control"
+						},
+						{
+						"label": "流程智能",
+						"link": "/flow/flow-intelligence"
+						}
 					]
 				},
 				{
@@ -125,17 +158,42 @@ export default defineConfig({
 				},
 				{
 					"label": "组织",
-					"link": "/organization"
-				},
-				{
-					"label": "容器",
 					"items": [
 						{
-						"label": "容器镜像",
-						"link": "/container/container-docker"
+						"label": "身份",
+						"link": "/org/identity"
+						},
+						{
+						"label": "数据隔离",
+						"link": "/org/data-isolation"
+						},
+						{
+						"label": "多人协同",
+						"link": "/org/multi-person-collaboration"
+						},
+						{
+						"label": "权限控制",
+						"link": "/org/permission-control"
 						}
 					]
-				},
+					},
+				{
+						"label": "容器",
+						"items": [
+						{
+						"label": "工具镜像",
+						"link": "/container/tool-images"
+						},
+						{
+						"label": "服务镜像",
+						"link": "/container/service-images"
+						},
+						{
+						"label": "中间件镜像",
+						"link": "/container/middleware-images"
+						}
+						]
+					},
 				{
 					"label": "集群",
 					"items": [
