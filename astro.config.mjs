@@ -184,7 +184,20 @@ export default defineConfig({
 						},
 						{
 						"label": "预置工具（模型测评）",
-						"link": "/tools/preset-tools-model-evaluation"
+						"items": [
+							{
+							"label": "工具镜像",
+							"link": "/container/tool-images"
+							},
+							{
+							"label": "服务镜像",
+							"link": "/container/service-images"
+							},
+							{
+							"label": "中间件镜像",
+							"link": "/container/middleware-images"
+							}
+							]
 						},
 						{
 						"label": "使用自定义工具",
