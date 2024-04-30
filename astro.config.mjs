@@ -53,43 +53,42 @@ export default defineConfig({
 				{
 					"label": "快速开始",
 					"items": [
-					{
-					"label": "使用云服务",
-					"link": "/getting-started/cloud-service"
-					},
-					{
-					"label": "Helm 部署",
-					"link": "/getting-started/helm-deployment"
-					///installation/helm
-					}
+						{
+						"label": "使用云服务",
+						"link": "/getting-started/cloud-service"
+						},
+						{
+						"label": "Helm 部署",
+						"link": "/getting-started/helm"
+						}
 					]
-					},
-					{
+				},
+				{
 					"label": "核心理念",
 					"items": [
-					{
-					"label": "大模型应用现状",
-					"link": "/core-concepts/application-status"
-					},
-					{
-					"label": "场景为先",
-					"link": "/core-concepts/scenario-first"
-					},
-					{
-					"label": "流程驱动",
-					"link": "/core-concepts/process-driven"
-					},
-					{
-					"label": "持续迭代",
-					"link": "/core-concepts/continuous-iteration"
-					},
-					{
-					"label": "云原生高可用",
-					"link": "/core-concepts/cloud-native"
-					}
+						{
+						"label": "大模型应用现状",
+						"link": "/core-concepts/application-status"
+						},
+						{
+						"label": "场景为先",
+						"link": "/core-concepts/scenario-first"
+						},
+						{
+						"label": "流程驱动",
+						"link": "/core-concepts/process-driven"
+						},
+						{
+						"label": "持续迭代",
+						"link": "/core-concepts/continuous-iteration"
+						},
+						{
+						"label": "云原生高可用",
+						"link": "/core-concepts/cloud-native"
+						}
 					]
-					},
-					{
+				},
+				{
 					"label": "场景",
 					"items": [
 					{
