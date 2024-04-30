@@ -96,49 +96,63 @@ export default defineConfig({
 					"link": "/scenarios/simp-dog-wechatbot-simulator"
 					}
 					]
-					},
-					{
-					"label": "迭代",
-					"link": "/iteration"
-					},
-					{
+				},
+				{
 					"label": "应用",
 					"link": "/application"
-					},
-					{
+				},
+				{
 					"label": "流程",
-					"link": "/process"
-					},
-					{
+					"items": [
+						{
+						"label": "流程 Schema",
+						"link": "/flow/flow-schema"
+						},
+					]
+				},
+				{
 					"label": "工具",
 					"items": [
-					{
-					"label": "预置工具",
-					"link": "/tools/preset-tools"
-					},
-					{
-					"label": "开发自定义工具",
-					"link": "/tools/custom-tools"
-					///build-tools/introduction
-					}
+						{
+						"label": "预置工具",
+						"link": "/tools/preset-tools"
+						},
+						{
+						"label": "开发自定义工具",
+						"link": "/tools/custom-tools"
+						}
 					]
-					},
-					{
+				},
+				{
 					"label": "组织",
 					"link": "/organization"
-					},
-					{
+				},
+				{
 					"label": "容器",
-					"link": "/container"
-					},
-					{
+					"items": [
+						{
+						"label": "容器镜像",
+						"link": "/container/container-docker"
+						}
+					]
+				},
+				{
+					"label": "集群",
+					"items": [
+						{
+						"label": "构建云原生集群",
+						"link": "/cluster/cluster"
+						}
+					]
+				},
+				{
 					"label": "算力",
 					"link": "/computing-power"
-					},
-					{
+				},
+				{
 					"label": "扩展阅读",
 					"link": "/further-reading"
-					}
+				}
 			],
 			plugins: [
 				starlightLinksValidator({
