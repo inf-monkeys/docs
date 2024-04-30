@@ -51,68 +51,100 @@ export default defineConfig({
 			locales,
 			sidebar: [
 				{
-					label: '介绍',
-					items: [
-						{
-							label: '快速开始',
-							link: '/getting-started',
-						},
-						{
-							label: '为什么选择 Monkeys?',
-							link: '/why-monkeys',
-						},
-						{
-							label: 'Monkeys 核心概念',
-							link: '/monkeys-concepts',
-						},
-						{
-							label: 'Monkeys 架构设计',
-							link: '/architecture',
-						},
-					],
-				},
-				{
-					label: '安装',
-					items: [
-						{
-							label: 'Helm chart 部署',
-							link: '/installation/helm',
-						},
-						{
-							label: '本地源码启动',
-							link: '/installation/local',
-						},
-					],
-				},
-				{
-					label: '应用示例',
-					items: [
-						{
-							label: '知识库问答机器人（RAG）',
-							link: '/showcases/qabot-based-on-knowledgebase',
-						},
-						{
-							label: '微信舔狗🐶机器人🤡',
-							link: '/showcases/simp-dog-wechatbot-simulator',
-						},
-						{
-							label: '使用 ComfyUI 流程画图并自动发送小红书',
-							link: '/showcases/comfyui-xiaohongshu-pipeline'
-						},
-						{
-							label: '小红书读书笔记全自动机器人',
-							link: '/showcases/xiaohongshu-book-bot'
-						}
-					],
-				},
-				{
-					label: '开发自定义 Tools',
-					items: [
-						{
-							label: '简介',
-							link: '/build-tools/introduction',
-						},
-					],
+					"label": "目录",
+					"items": [
+					{
+					"label": "快速开始",
+					"items": [
+					{
+					"label": "使用云服务",
+					"link": "/getting-started/cloud-service"
+					},
+					{
+					"label": "Helm 部署",
+					"link": "/getting-started/helm-deployment"
+					///installation/helm
+					}
+					]
+					},
+					{
+					"label": "核心理念",
+					"items": [
+					{
+					"label": "大模型应用现状",
+					"link": "/core-concepts/application-status"
+					},
+					{
+					"label": "场景为先",
+					"link": "/core-concepts/scenario-first"
+					},
+					{
+					"label": "流程驱动",
+					"link": "/core-concepts/process-driven"
+					},
+					{
+					"label": "持续迭代",
+					"link": "/core-concepts/continuous-iteration"
+					},
+					{
+					"label": "云原生高可用",
+					"link": "/core-concepts/cloud-native"
+					}
+					]
+					},
+					{
+					"label": "场景",
+					"items": [
+					{
+					"label": "微信舔狗机器人",
+					"link": "/scenarios/wechat-dog-robot"
+					///showcases/simp-dog-wechatbot-simulator
+					}
+					]
+					},
+					{
+					"label": "迭代",
+					"link": "/iteration"
+					},
+					{
+					"label": "应用",
+					"link": "/application"
+					},
+					{
+					"label": "流程",
+					"link": "/process"
+					},
+					{
+					"label": "工具",
+					"items": [
+					{
+					"label": "预置工具",
+					"link": "/tools/preset-tools"
+					},
+					{
+					"label": "开发自定义工具",
+					"link": "/tools/custom-tools"
+					///build-tools/introduction
+					}
+					]
+					},
+					{
+					"label": "组织",
+					"link": "/organization"
+					},
+					{
+					"label": "容器",
+					"link": "/container"
+					},
+					{
+					"label": "算力",
+					"link": "/computing-power"
+					},
+					{
+					"label": "扩展阅读",
+					"link": "/further-reading"
+					}
+					]
 				}
 			],
 			plugins: [
