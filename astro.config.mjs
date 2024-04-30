@@ -147,8 +147,48 @@ export default defineConfig({
 					"label": "工具",
 					"items": [
 						{
-						"label": "预置工具",
-						"link": "/tools/preset-tools"
+						"label": "工具声明式语法",
+						"link": "/tools/declarative-syntax"
+						},
+						{
+						"label": "工具列表",
+						"link": "/tools/tool-list"
+						},
+						{
+						"label": "预置工具（大语言模型）",
+						"link": "/tools/preset-tools-large-language-models"
+						},
+						{
+						"label": "预置工具（多模态模型）",
+						"link": "/tools/preset-tools-multimodal-models"
+						},
+						{
+						"label": "预置工具（数据处理）",
+						"link": "/tools/preset-tools-data-processing"
+						},
+						{
+						"label": "预置工具（私有数据搜索）",
+						"link": "/tools/preset-tools-private-data-search"
+						},
+						{
+						"label": "预置工具（文件处理）",
+						"link": "/tools/preset-tools-file-handling"
+						},
+						{
+						"label": "预置工具（自动化）",
+						"link": "/tools/preset-tools-automation"
+						},
+						{
+						"label": "预置工具（模型训练）",
+						"link": "/tools/preset-tools-model-training"
+						},
+						{
+						"label": "预置工具（模型测评）",
+						"link": "/tools/preset-tools-model-evaluation"
+						},
+						{
+						"label": "使用自定义工具",
+						"link": "/tools/custom-tools-use"
 						},
 						{
 						"label": "开发自定义工具",
