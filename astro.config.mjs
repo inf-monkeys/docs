@@ -93,8 +93,7 @@ export default defineConfig({
 					"items": [
 					{
 					"label": "微信舔狗机器人",
-					"link": "/scenarios/wechat-dog-robot"
-					///showcases/simp-dog-wechatbot-simulator
+					"link": "/scenarios/simp-dog-wechatbot-simulator"
 					}
 					]
 					},
