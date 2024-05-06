@@ -1,0 +1,72 @@
+---
+title: 工具声明式语法
+description: 工具声明式语法
+---
+
+在 Monkeys 的设计中，工具（Tools）就是一个（组）可被调用的、满足 [OpenAPI Specification](https://swagger.io/specification/) 标准的 API。
+
+工具通过 `manifest.json` 接口描述自身的元信息，比如名称、版本、描述、鉴权方式 、API 接口地址、限流配置等。Monkeys 通过解析 `manifest.json` 文件，自动构建工具的调用界面，用户可以通过界面配置工具的输入参数，然后调用工具执行任务。
+
+工具还可以在工作流中被串联起来，形成一个流程，实现复杂的任务。
+
+你可以阅读[开发自定义工具](/docs/zh-cn/tools/custom-tools)了解具体实例。
+
+## Schema 定义
+
+以下是一个示例的 `manifest.json` 文件，取至内置的[示例工具](https://github.com/inf-monkeys/monkeys/blob/main/src/modules/tools/example/example.controller.ts):
+
+```json
+{
+	"schema_version": "v1",
+	"display_name": "示例工具",
+	"namespace": "monkey_tools_example",
+	"auth": {
+		"type": "none"
+	},
+	"api": {
+		"type": "openapi",
+		"url": "/api/example-tool/openapi-json"
+	},
+	"contact_email": "dev@inf-monkeys.com"
+}
+```
+
+| Key                      | 描述                                                                                          | 默认值   | 是否必填 |
+| ------------------------ | --------------------------------------------------------------------------------------------- | -------- | -------- |
+| schema_version           | Schema 版本号，当前只支持 `v1`                                                                | `v1`     | 是       |
+| display_name             | 工具显示名称                                                                                  | -        | 是       |
+| namespace                | 此工具的唯一标志，必须保持唯一。只运行包含数字、字母和下划线。                                | -        |          | 是  |
+| auth.type                | 鉴权方式，可选值为 `none` (不鉴权) 和 `service_http` (服务级别鉴权)                           | `none`   | 是       |
+| auth.authorization_type  | 当鉴权方式为 `service_http` 时，需要设置 `authorization_type`，当前仅支持 `bearer` 认证方式。 | `bearer` | 否       |
+| auth.verification_tokens | 当鉴权方式为 `service_http` 时，需要设置 `verification_tokens`, 此值为一个对象，通过 `monkeys` key 指定    bearer token。 |    `{"monkeys": "token-123"}`      | 否       |
+| api.type    | API 类型，当前只支持 `openapi`                                                                   |    `openapi`      | 是       |
+| api.url    | Swagger API Spec 地址，可以是相对路径或者绝对路径。                                                                   |    -      | 是       |
+| contact_email    | 开发者联系邮箱。                                                                 |    -      | 否       |
+
+### 鉴权方式
+
+鉴权方式示例。
+
+#### 无鉴权
+
+```json
+{
+    "auth": {
+        "type": "none"
+    }
+}
+```
+
+#### 服务级别鉴权
+
+```json
+{
+    "auth": {
+        "type": "service_http",
+        "authorization_type": "bearer",
+        "verification_tokens": {
+            "monkeys": "token-123"
+        }
+    }
+}
+```
