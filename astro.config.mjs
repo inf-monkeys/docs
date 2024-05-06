@@ -156,35 +156,35 @@ export default defineConfig({
 						},
 						{
 						"label": "预置工具（大语言模型）",
-						"link": "/tools/preset-tools-large-language-models"
+						"link": "/tools/builtin-tools-large-language-models"
 						},
 						{
 						"label": "预置工具（多模态模型）",
-						"link": "/tools/preset-tools-multimodal-models"
+						"link": "/tools/builtin-tools-multimodal-models"
 						},
 						{
 						"label": "预置工具（数据处理）",
-						"link": "/tools/preset-tools-data-processing"
+						"link": "/tools/builtin-tools-data-processing"
 						},
 						{
 						"label": "预置工具（私有数据搜索）",
-						"link": "/tools/preset-tools-private-data-search"
+						"link": "/tools/builtin-tools-private-data-search"
 						},
 						{
 						"label": "预置工具（文件处理）",
-						"link": "/tools/preset-tools-file-handling"
+						"link": "/tools/builtin-tools-file-handling"
 						},
 						{
 						"label": "预置工具（自动化）",
-						"link": "/tools/preset-tools-automation"
+						"link": "/tools/builtin-tools-automation"
 						},
 						{
 						"label": "预置工具（模型训练）",
-						"link": "/tools/preset-tools-model-training"
+						"link": "/tools/builtin-tools-model-training"
 						},
 						{
 						"label": "预置工具（模型测评）",
-						"link": "/tools/preset-tools-model-evaluation"
+						"link": "/tools/builtin-tools-model-evaluation"
 						},
 						{
 						"label": "使用自定义工具",

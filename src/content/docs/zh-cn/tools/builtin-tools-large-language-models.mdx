@@ -1,0 +1,141 @@
+---
+title: 预置工具（大语言模型）
+description: 预置工具（大语言模型）
+---
+
+| -        | 描述                                                                   |
+| -------- | ---------------------------------------------------------------------- |
+| 项目地址 | https://github.com/inf-monkeys/monkeys/tree/main/src/modules/tools/llm |
+| 安装步骤 | 大语言模型工具内置于 [https://github.com/inf-monkeys/monkeys](https://github.com/inf-monkeys/monkeys) 中，工具本身无需额外安装。但是如果你需要使用本地模型，你可能需要借助于 [vllm](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html) 等工具在本地部署 openai 接口兼容的大预言模型接口。 |
+| 支持的 LLM 模型列表 | 任意满足 openai 接口标准的大预言模型均支持，如 ChatGPT、Azure ChatGPT、VLLM 部署的模型等等。 |
+
+## 部署模型（可选）
+
+但是如果你需要使用本地模型，你可能需要借助于 [vllm](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html) 等工具在本地部署 openai 接口兼容的大预言模型接口。 
+
+部署完成之后，你可以在 `config.yaml` 中配置大语言模型工具，以便 Monkeys 能够调用你本地的大语言模型接口。
+
+## 配置
+
+在 [monkeys](https://github.com/inf-monkeys/monkeys) 的 `config.yaml` 中加入以下大语言模型工具配置项：
+
+| 参数            | 描述                                                                                                                           | 默认值 |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| `model`         | model name，如 `gpt-3.5-turbo`                                                                                                 |        |
+| `baseURL`       | 访问地址，如 `https://api.openai.com/v1`                                                                                       |        |
+| `apiKey`        | APIKey，如果没有可不填。                                                                                                       |        |
+| `type`          | 此模型的类型，可选值为 `chat_completions` 和 `completions`，分别表示是一个对话模型还是文本补全模型。不填则表示两种方式都支持。 | `""`   |
+| `defaultParams` | 默认请求参数，比如一些模型如 `Qwen/Qwen-7B-Chat-Int4`，需要设置 top 参数。                                                     |        |
+
+
+以下是一个示例：
+
+```yaml
+models:
+  - model: gpt-3.5-turbo
+    baseURL: https://api.openai.com/v1
+    apiKey: xxxxxxxxxxxxxx
+    type:
+      - chat_completions
+  - model: davinci-002
+    baseURL: https://api.openai.com/v1
+    apiKey: xxxxxxxxxxxxxx
+    type:
+      - completions
+  - model: Qwen/Qwen-7B-Chat-Int4
+    baseURL: http://127.0.0.1:8000/v1
+    apiKey: token-abc123
+    defaultParams:
+      stop:
+        - <|im_start|>
+        - <|im_end|>
+```
+
+## 快速使用
+
+### 通过对话视图使用
+
+创建号团队之后，每个团队下面会内置两个默认工作流：
+
+- 大语言模型多轮对话
+- 大语言模型单轮对话
+
+![](~/assets/installation/default-workflow.png)
+
+进入工作流详情，选择一个模型，可配置知识库上下文（可选）。
+
+![](~/assets/installation/config-model.png)
+
+
+切换到对话视图，你可以在此和大语言模型开始对话。
+
+![](~/assets/tools/llm/chat.png)
+
+
+### 通过 API 接口调用
+
+点击右上角的集成中心，可以看到 API 使用文档：
+
+![](~/assets/installation/api-doc.png)
+
+你可以复制到命令行终端，运行成功说明功能正常
+
+![](~/assets/installation/run-in-terminal.png)
+
+## 让 AI 自动使用工具
+
+> 注意：不是所有的大语言模型都支持 ChatGPT 的 `tools` 参数。
+
+这里我们以天气查询为例，大预言模型本身不具备实时查询天气的能力，但是我们可以借助查询天气的工具，让大预言模型自动调用天气查询工具。在此我们需要用到 [https://github.com/inf-monkeys/monkey-tools-template-flask](https://github.com/inf-monkeys/monkey-tools-template-flask) 这个项目。
+
+部署好查询天气工具之后，在**大预言模型多轮对话**节点的工具列表中，选择**天气查询**工具：
+
+![](~/assets/tools/llm/auto-call-tools.png)
+
+点击保存。复制 CURL 命令到终端运行：
+
+```sh
+curl -X POST 'http://localhost:2048/api/chat/completions' \
+--header 'Authorization: Bearer sk-sssssssssssssssssssssssssssss' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "model": "workflow id",
+    "messages": [{"role": "user", "content": "北京的天气今天咋样？"}],
+    "stream": false
+}'
+```
+
+可以看到 ChatGPT 正确回答了北京当天的天气：
+
+```json
+{
+  "id": "chatcmpl-9LnNw1hDo1SxckOrMqWPR5mRYV9pZ",
+  "object": "chat.completion",
+  "created": 1714981752,
+  "model": "gpt-4-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "北京现在的气温是25.8°C，风速为4.7公里每小时。"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3772,
+    "completion_tokens": 27,
+    "total_tokens": 3799
+  }
+}
+```
+
+查询 monkeys 日志，可以看到大预言模型成功调用了天气查询工具：
+
+![](~/assets/tools/llm/call-tool.png)
+
+## 为 AI 添加私有知识库
+
+详细使用方法请参考 [私有数据搜索](./builtin-tools-private-data-search) 文档。
