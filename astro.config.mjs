@@ -51,218 +51,222 @@ export default defineConfig({
 			locales,
 			sidebar: [
 				{
-					"label": "快速开始",
-					"items": [
+					label: '快速开始',
+					items: [
 						{
-						"label": "使用云服务",
-						"link": "/getting-started/cloud-service"
+							label: '使用云服务',
+							link: '/getting-started/cloud-service',
 						},
 						{
-						"label": "Helm 部署",
-						"link": "/getting-started/helm"
-						}
-					]
+							label: 'Helm 部署',
+							link: '/getting-started/helm',
+						},
+						{
+							label: 'Docker Compose 部署',
+							link: '/getting-started/docker-compose',
+						},
+					],
 				},
 				{
-					"label": "核心理念",
-					"items": [
+					label: '核心理念',
+					items: [
 						{
-						"label": "大模型应用生命周期",
-						"link": "/core-concepts/application-status"
+							label: '大模型应用生命周期',
+							link: '/core-concepts/application-status',
 						},
 						{
-						"label": "场景为先",
-						"link": "/core-concepts/scenario-first"
+							label: '场景为先',
+							link: '/core-concepts/scenario-first',
 						},
 						{
-						"label": "流程驱动",
-						"link": "/core-concepts/flow-driven"
+							label: '流程驱动',
+							link: '/core-concepts/flow-driven',
 						},
 						{
-						"label": "持续迭代",
-						"link": "/core-concepts/continuous-iteration"
+							label: '持续迭代',
+							link: '/core-concepts/continuous-iteration',
 						},
 						{
-						"label": "云原生高可用",
-						"link": "/core-concepts/cloud-native"
-						}
-					]
+							label: '云原生高可用',
+							link: '/core-concepts/cloud-native',
+						},
+					],
 				},
 				{
-					"label": "场景",
-					"items": [
-					{
-					"label": "微信舔狗机器人",
-					"link": "/scenarios/simp-dog-wechatbot-simulator"
-					}
-					]
+					label: '场景',
+					items: [
+						{
+							label: '微信舔狗机器人',
+							link: '/scenarios/simp-dog-wechatbot-simulator',
+						},
+					],
 				},
 				{
-					"label": "应用",
-					"items": [
+					label: '应用',
+					items: [
 						{
-						"label": "应用构建",
-						"link": "/applications/application-building"
+							label: '应用构建',
+							link: '/applications/application-building',
 						},
 						{
-						"label": "应用集成",
-						"link": "/applications/application-integration"
+							label: '应用集成',
+							link: '/applications/application-integration',
 						},
 						{
-						"label": "应用可观测性",
-						"link": "/applications/application-observability"
+							label: '应用可观测性',
+							link: '/applications/application-observability',
 						},
 						{
-						"label": "应用智能",
-						"link": "/applications/application-intelligence"
+							label: '应用智能',
+							link: '/applications/application-intelligence',
 						},
 						{
-						"label": "典型应用示例",
-						"link": "/applications/application-examples"
-						}
-					]
+							label: '典型应用示例',
+							link: '/applications/application-examples',
+						},
+					],
 				},
 				{
-					"label": "流程",
-					"items": [
+					label: '流程',
+					items: [
 						{
-						"label": "流程声明式语法",
-						"link": "/flow/flow-schema"
+							label: '流程声明式语法',
+							link: '/flow/flow-schema',
 						},
 						{
-						"label": "流程可视化配置",
-						"link": "/flow/visualization-configuration"
+							label: '流程可视化配置',
+							link: '/flow/visualization-configuration',
 						},
 						{
-						"label": "流程控制",
-						"link": "/flow/flow-control"
+							label: '流程控制',
+							link: '/flow/flow-control',
 						},
 						{
-						"label": "流程智能",
-						"link": "/flow/flow-intelligence"
-						}
-					]
+							label: '流程智能',
+							link: '/flow/flow-intelligence',
+						},
+					],
 				},
 				{
-					"label": "工具",
-					"items": [
+					label: '工具',
+					items: [
 						{
-						"label": "工具声明式语法",
-						"link": "/tools/declarative-syntax"
+							label: '工具声明式语法',
+							link: '/tools/declarative-syntax',
 						},
 						{
-						"label": "工具列表",
-						"link": "/tools/tool-list"
+							label: '工具列表',
+							link: '/tools/tool-list',
 						},
 						{
-						"label": "预置工具（大语言模型）",
-						"link": "/tools/builtin-tools-large-language-models"
+							label: '预置工具（大语言模型）',
+							link: '/tools/builtin-tools-large-language-models',
 						},
 						{
-						"label": "预置工具（多模态模型）",
-						"link": "/tools/builtin-tools-multimodal-models"
+							label: '预置工具（多模态模型）',
+							link: '/tools/builtin-tools-multimodal-models',
 						},
 						{
-						"label": "预置工具（数据处理）",
-						"link": "/tools/builtin-tools-data-processing"
+							label: '预置工具（数据处理）',
+							link: '/tools/builtin-tools-data-processing',
 						},
 						{
-						"label": "预置工具（私有数据搜索）",
-						"link": "/tools/builtin-tools-private-data-search"
+							label: '预置工具（私有数据搜索）',
+							link: '/tools/builtin-tools-private-data-search',
 						},
 						{
-						"label": "预置工具（文件处理）",
-						"link": "/tools/builtin-tools-file-handling"
+							label: '预置工具（文件处理）',
+							link: '/tools/builtin-tools-file-handling',
 						},
 						{
-						"label": "预置工具（自动化）",
-						"link": "/tools/builtin-tools-automation"
+							label: '预置工具（自动化）',
+							link: '/tools/builtin-tools-automation',
 						},
 						{
-						"label": "预置工具（模型训练）",
-						"link": "/tools/builtin-tools-model-training"
+							label: '预置工具（模型训练）',
+							link: '/tools/builtin-tools-model-training',
 						},
 						{
-						"label": "预置工具（模型测评）",
-						"link": "/tools/builtin-tools-model-evaluation"
+							label: '预置工具（模型测评）',
+							link: '/tools/builtin-tools-model-evaluation',
 						},
 						{
-						"label": "使用自定义工具",
-						"link": "/tools/custom-tools-use"
+							label: '使用自定义工具',
+							link: '/tools/custom-tools-use',
 						},
 						{
-						"label": "开发自定义工具",
-						"link": "/tools/custom-tools"
-						}
-					]
+							label: '开发自定义工具',
+							link: '/tools/custom-tools',
+						},
+					],
 				},
 				{
-					"label": "组织",
-					"items": [
+					label: '组织',
+					items: [
 						{
-						"label": "身份",
-						"link": "/org/identity"
+							label: '身份',
+							link: '/org/identity',
 						},
 						{
-						"label": "数据隔离",
-						"link": "/org/data-isolation"
+							label: '数据隔离',
+							link: '/org/data-isolation',
 						},
 						{
-						"label": "多人协同",
-						"link": "/org/multi-person-collaboration"
+							label: '多人协同',
+							link: '/org/multi-person-collaboration',
 						},
 						{
-						"label": "权限控制",
-						"link": "/org/permission-control"
-						}
-					]
-					},
-				{
-						"label": "容器",
-						"items": [
-						{
-						"label": "工具镜像",
-						"link": "/container/tool-images"
+							label: '权限控制',
+							link: '/org/permission-control',
 						},
-						{
-						"label": "服务镜像",
-						"link": "/container/service-images"
-						},
-						{
-						"label": "中间件镜像",
-						"link": "/container/middleware-images"
-						}
-						]
-					},
-				{
-						"label": "集群",
-						"items": [
-						{
-						"label": "构建云原生集群",
-						"link": "/cluster/building-cloud-native-cluster"
-						},
-						{
-						"label": "Helm 部署和更新",
-						"link": "/cluster/helm-deploy-update"
-						},
-						{
-						"label": "多副本负载均衡",
-						"link": "/cluster/multiple-replica-load-balancing"
-						},
-						{
-						"label": "多副本弹性扩容",
-						"link": "/cluster/multiple-replica-elastic-expansion"
-						}
-						]
+					],
 				},
 				{
-					"label": "算力",
-					"link": "/computing-power"
+					label: '容器',
+					items: [
+						{
+							label: '工具镜像',
+							link: '/container/tool-images',
+						},
+						{
+							label: '服务镜像',
+							link: '/container/service-images',
+						},
+						{
+							label: '中间件镜像',
+							link: '/container/middleware-images',
+						},
+					],
 				},
 				{
-					"label": "扩展阅读",
-					"link": "/further-reading"
-				}
+					label: '集群',
+					items: [
+						{
+							label: '构建云原生集群',
+							link: '/cluster/building-cloud-native-cluster',
+						},
+						{
+							label: 'Helm 部署和更新',
+							link: '/cluster/helm-deploy-update',
+						},
+						{
+							label: '多副本负载均衡',
+							link: '/cluster/multiple-replica-load-balancing',
+						},
+						{
+							label: '多副本弹性扩容',
+							link: '/cluster/multiple-replica-elastic-expansion',
+						},
+					],
+				},
+				{
+					label: '算力',
+					link: '/computing-power',
+				},
+				{
+					label: '扩展阅读',
+					link: '/further-reading',
+				},
 			],
 			plugins: [
 				starlightLinksValidator({
@@ -275,6 +279,6 @@ export default defineConfig({
 	],
 	image: {
 		service: passthroughImageService(),
-		remotePatterns: [{ protocol: "https" }],
+		remotePatterns: [{ protocol: 'https' }],
 	},
 });
