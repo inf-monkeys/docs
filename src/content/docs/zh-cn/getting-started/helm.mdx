@@ -20,17 +20,20 @@ description: 使用 Helm Chart 一键安装
 
 ### Docker 镜像地址
 
-> 提供压缩包版和在线 Docker Hub 版。压缩包版用于在离线环境下部署，但是更新时间可能不及时。
+> 提供压缩包版和在线 Docker Hub 版，压缩包版用于在离线环境下部署。需要注意的是：**需要替换压缩包版的 OSS 地址 的 $RELEASE_TAG 为最新版 Tag**，最新版的 tag 请到对应的 DockerHub 地址查看。
 
-| 服务名称                    | 镜像名称                               | DockerHub 地址                                                  | OSS 下载地址                                                                                                    |
-| --------------------------- | -------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| monkeys                     | infmonkeys/monkeys                     | https://hub.docker.com/r/infmonkeys/monkeys                     | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-0.0.28.zip                                         |
-| monkeys-ui                  | infmonkeys/monkeys-ui                  | https://hub.docker.com/r/infmonkeys/monkeys-ui                  | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-0.0.28.zip                                   |
-| conductor                   | infmonkeys/conductor                   | https://hub.docker.com/r/infmonkeys/conductor                   | https://static.infmonkeys.com/docker/monkeys/conductor/conductor-1.0.0.zip                                      |
-| monkey-tools-sandbox        | infmonkeys/monkey-tools-sandbox        | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox        | https://static.infmonkeys.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-0.0.2.zip                |
-| monkey-tools-knowledge-base | infmonkeys/monkey-tools-knowledge-base | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base | https://static.infmonkeys.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-0.0.12.zip |
-| nginx                       | nginx                                  | https://hub.docker.com/_/nginx                                  | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                                          |
-| piston（Python 沙箱）       | ghcr.io/engineer-man/piston            | https://github.com/engineer-man/piston/pkgs/container/piston    | https://static.infmonkeys.com/docker/opensource/piston/piston-latest.zip                                        |
+> monkeys-multi-tenancy 为多租户版，需要购买商业版授权才能使用，除非你是我们的商业合作伙伴，觉大多数情况下你都应该使用 monkeys 镜像。
+
+| 服务名称                    | 镜像名称                               | DockerHub 地址                                                  | OSS 下载地址                                                                                                             |
+| --------------------------- | -------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| monkeys                     | infmonkeys/monkeys                     | https://hub.docker.com/r/infmonkeys/monkeys                     | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz                                         |
+| monkeys-multi-tenancy       | infmonkeys/monkeys-multi-tenancy       | https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy       | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz                           |
+| monkeys-ui                  | infmonkeys/monkeys-ui                  | https://hub.docker.com/r/infmonkeys/monkeys-ui                  | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz                                   |
+| conductor                   | infmonkeys/conductor                   | https://hub.docker.com/r/infmonkeys/conductor                   | https://static.infmonkeys.com/docker/monkeys/conductor/conductor-1.0.0.zip                                               |
+| monkey-tools-sandbox        | infmonkeys/monkey-tools-sandbox        | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox        | https://static.infmonkeys.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-$RELEASE_TAG.tar.gz               |
+| monkey-tools-knowledge-base | infmonkeys/monkey-tools-knowledge-base | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base | https://static.infmonkeys.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-$RELEASE_TAG.tar.gz |
+| nginx                       | nginx                                  | https://hub.docker.com/_/nginx                                  | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                                                   |
+| piston（Python 沙箱）       | ghcr.io/engineer-man/piston            | https://github.com/engineer-man/piston/pkgs/container/piston    | https://static.infmonkeys.com/docker/opensource/piston/piston-latest.zip                                                 |
 
 ### Python 沙箱（可选）
 
@@ -39,7 +42,6 @@ description: 使用 Helm Chart 一键安装
 | 版本号 | 下载地址                                                                 |
 | ------ | ------------------------------------------------------------------------ |
 | 3.10.0 | https://static.infmonkeys.com/docker/monkeys/piston/python-3.10.0.tar.gz |
-
 
 ## 部署文档
 
@@ -52,6 +54,7 @@ description: 使用 Helm Chart 一键安装
 配置项列表：https://github.com/inf-monkeys/monkeys-cloud/blob/main/CONFIGURATION_zh.md
 
 备注：
+
 - 会使用 nginx 作为反向代理，将请求路由到 monkeys 前后端，使用 monkeys-proxy svc 对外提供服务。
 - 在 `Values.yaml` 的 `server.models` 指定大语言模型的地址。
 
