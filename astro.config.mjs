@@ -192,11 +192,11 @@ export default defineConfig({
 						},
 						{
 							label: '使用自定义工具',
-							link: '/tools/custom-tools-use',
+							link: '/tools/use-custom-tools',
 						},
 						{
 							label: '开发自定义工具',
-							link: '/tools/custom-tools',
+							link: '/tools/build-custom-tools',
 						},
 					],
 				},

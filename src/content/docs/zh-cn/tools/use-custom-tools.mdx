@@ -1,0 +1,233 @@
+---
+title: 使用自定义工具
+description: 使用自定义工具
+---
+
+如果你的工具支持 API 调用，你可以将你的工具导入到 Monkeys 平台中来。
+
+## 导入方式
+
+Monkeys 支持三种导入工具的方式：
+
+- (推荐)定义 Monkeys 标准的 Manifest.json 文件
+- 使用现成的 OpenAPI 文档
+- 手动导入
+
+## 通过 Manifest.json 导入
+
+详情请阅读 [工具声明式语法](/docs/zh-cn/tools/declarative-syntax) 和 [开发自定义工具](/docs/zh-cn/tools/build-custom-tools)。
+
+## 通过现成 Swagger API 文档导入
+
+在控制台中**执行类工具**页面，点击右上角的**导入**按钮，选择工具声明类型为 **Swagger Spec 文件** 输入 Swagger API 文档地址，点击**导入**。
+
+![](~/assets/tools/import/import-by-swagger.png)
+
+## 手动导入
+
+在控制台中**执行类工具**页面，点击右上角的**导入**按钮，选择工具声明类型为 **手动构建**：
+
+![](~/assets/tools/import/import-manually.png)
+
+以下为表单每个字段的含义，我们以接入 [Tavily AI 的 API](https://docs.tavily.com/docs/tavily-api/rest_api) 为例:
+
+- **显示名称**：工具的显示名称，如 `Tavily AI 搜索`；
+- **描述**：工具的描述，如 `使用 Tavily AI 搜索`；
+- **接口地址**：工具的接口地址，例如：`https://api.tavily.com/search`
+- **HTTP 请求方法**：工具的 HTTP 请求方法，例如：`POST`
+- **鉴权方式**：此工具要求的鉴权方式。
+  - **Header**: 在请求头中添加鉴权
+  - **Query**: 在 Query 查询参数中添加鉴权
+  - **Body**: 在 Body 中添加鉴权
+- **密钥值**: 密钥的内容
+- **密钥 Key**: 密钥对应的 Key
+
+> 例如你设置的鉴权方式为 `Header`, 密钥 Key 为 `Authorization`, 密钥值为 `Bearer xxxxxxx`，则会请求头中添加
+>
+> ```json
+> {
+> 	"Authrozation": "Bearer xxxxxxx"
+> }
+> ```
+>
+> 针对 Tavily AI 的场景，应该设置 **鉴权方式** 为 `Body`, **密钥值** 为 Tavily API Key, **密钥 Key** 为 `api_key`。
+
+- **请求参数**: 定义此接口的参数，示例如下：
+
+> 注：Tavily AI 的 Api Key 需要放置在 Body 的请求参数中，你可以在请求参数中定义，这样运行时需要用户输入 ApiKey，或者你可以在上述的鉴权方式中配置。
+
+```json
+[
+	{
+		"displayName": "api_key",
+		"name": "api_key",
+		"type": "string",
+		"required": true,
+		"description": "Your unique API key."
+	},
+	{
+		"displayName": "query",
+		"name": "query",
+		"type": "string",
+		"required": true,
+		"description": "The search query string."
+	},
+	{
+		"displayName": "search_depth",
+		"name": "search_depth",
+		"type": "options",
+		"default": "basic",
+		"options": [
+			{
+				"name": "basic",
+				"value": "basic"
+			},
+			{
+				"name": "advanced",
+				"value": "advanced"
+			}
+		],
+		"required": false,
+		"description": "The depth of the search. It can be basic or advanced. Default is basic for quick results and advanced for indepth high quality results but longer response time. Advanced calls equals 2 requests."
+	},
+	{
+		"displayName": "include_images",
+		"name": "include_images",
+		"type": "boolean",
+		"default": false,
+		"required": false,
+		"description": "Include a list of query related images in the response. Default is False."
+	},
+	{
+		"displayName": "include_answer",
+		"name": "include_answer",
+		"type": "boolean",
+		"default": false,
+		"required": false,
+		"description": "Include answers in the search results. Default is False."
+	},
+	{
+		"displayName": "include_raw_content",
+		"name": "include_raw_content",
+		"type": "boolean",
+		"default": false,
+		"required": false,
+		"description": "Include raw content in the search results. Default is False."
+	},
+	{
+		"displayName": "max_results",
+		"name": "max_results",
+		"type": "number",
+		"default": 5,
+		"required": false,
+		"description": "The number of maximum search results to return. Default is 5."
+	},
+	{
+		"displayName": "include_domains",
+		"name": "include_domains",
+		"type": "string",
+		"required": false,
+		"description": "A list of domains to specifically include in the search results. Default is None, which includes all domains.",
+		"typeOptions": {
+			"multipleValues": true
+		}
+	},
+	{
+		"displayName": "exclude_domains",
+		"name": "exclude_domains",
+		"type": "string",
+		"required": false,
+		"description": "A list of domains to specifically exclude from the search results. Default is None, which doesn't exclude any domains.",
+		"typeOptions": {
+			"multipleValues": true
+		}
+	}
+]
+```
+
+- **返回数据**: 定义此接口的返回数据，示例如下：
+
+```json
+[
+	{
+		"name": "answer",
+		"displayName": "answer",
+		"type": "string"
+	},
+	{
+		"name": "query",
+		"displayName": "query",
+		"type": "string"
+	},
+	{
+		"name": "response_time",
+		"displayName": "response_time",
+		"type": "number"
+	},
+	{
+		"name": "images",
+		"displayName": "images",
+		"type": "string",
+		"typeOptions": {
+			"multipleValues": true
+		}
+	},
+	{
+		"name": "follow_up_questions",
+		"displayName": "follow_up_questions",
+		"type": "string",
+		"typeOptions": {
+			"multipleValues": true
+		}
+	},
+	{
+		"name": "results",
+		"displayName": "results",
+		"type": "json",
+		"typeOptions": {
+			"multipleValues": true
+		},
+		"properties": [
+			{
+				"name": "title",
+				"displayName": "title",
+				"type": "string"
+			},
+			{
+				"name": "url",
+				"displayName": "url",
+				"type": "string"
+			},
+			{
+				"name": "content",
+				"displayName": "content",
+				"type": "string"
+			},
+			{
+				"name": "raw_content",
+				"displayName": "raw_content",
+				"type": "string"
+			},
+			{
+				"name": "score",
+				"displayName": "score",
+				"type": "number"
+			}
+		]
+	}
+]
+```
+
+导入之后，可以看到我们为这个自动工具生成了一个表单：
+
+![](~/assets/tools/import/import-result.png)
+
+输入一个问题，如「特斯拉今天的股价是多少」测试运行：
+
+![](~/assets/tools/import/workflow-result.png)
+
+你也可以在大语言模型多轮对话中是有此工具：
+
+![](~/assets/tools/import/llm-use-tool.png)
+
+![](~/assets/tools/import/llm-chat-tool.png)
