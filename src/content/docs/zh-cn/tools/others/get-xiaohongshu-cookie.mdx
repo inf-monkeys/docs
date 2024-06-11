@@ -1,0 +1,44 @@
+---
+title: 如何获取小红书 Cookie
+description: 如何获取小红书 Cookie
+---
+
+此篇文章介绍如何在小红书网页版获取 Cookie。
+
+## 注意事项
+
+1. 网页端和创作服务平台需要同时保持登录并且使用同一个账号登录。
+2. 一段时间后 Cookie 可能会失效，需要重新获取。
+3. 主动退出登录会导致 Cookie 失效。
+
+## 操作步骤
+
+### 1. 登录小红书网页端
+
+浏览器访问 [https://www.xiaohongshu.com](https://www.xiaohongshu.com) 并登录账号。
+
+### 2. 登录小红书创作服务平台
+
+浏览器访问 [https://creator.xiaohongshu.com](https://creator.xiaohongshu.com) 并**使用同一个账号**登录。
+
+> 注意：网页端和创作服务平台需要同时保持登录并且使用同一个账号登录。
+
+### 3. 打开开发者工具
+
+在网页中右键，选择**检查**，打开开发者调试工具，并且切换到**Network（网络）**选项卡。
+
+![小红书开发者工具](~/assets/tools/others/xiaohongshu/dev-tools.png)
+
+### 4. 获取 Cookie
+
+任意发布一篇笔记：
+
+![小红书开发者工具](~/assets/tools/others/xiaohongshu/test-post.png)
+
+注意观测开发者工具中的请求，找到 URL 为 `https://edith.xiaohongshu.com/web_api/sns/v2/note` 的 `POST` 请求：
+
+![小红书开发者工具](~/assets/tools/others/xiaohongshu/find-note-api.png)
+
+在 `Request Headers(请求头)` 中找到 `Cookie` 字段，即为小红书的 Cookie：
+
+![小红书开发者工具](~/assets/tools/others/xiaohongshu/get-cookie.png)

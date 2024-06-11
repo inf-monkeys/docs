@@ -198,6 +198,15 @@ export default defineConfig({
 							label: '开发自定义工具',
 							link: '/tools/build-custom-tools',
 						},
+						{
+							label: '其他',
+							items: [
+								{
+									label: '如何获取小红书 Cookie',
+									link: '/tools/others/get-xiaohongshu-cookie',
+								},
+							]
+						}
 					],
 				},
 				{
