@@ -39,7 +39,7 @@ description: 预置工具（私有数据搜索）
 复制工作流详情右上角的集成中心按钮，复制 CURL 命令到终端运行：
 
 ```sh
-curl -X POST 'http://localhost:2048/api/chat/completions' \
+curl -X POST 'http://localhost:2048/v1/chat/completions' \
 --header 'Authorization: Bearer sk-xxxxxxxxxxxxxxxxxxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
