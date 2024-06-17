@@ -274,7 +274,26 @@ export default defineConfig({
 				},
 				{
 					label: '扩展阅读',
-					link: '/further-reading',
+					items: [
+						// {
+						// 	label: 'VLLM 本地部署大模型',
+						// 	items: [
+						// 		{
+						// 			label: 'Command+R',
+						// 			link: '/others/vllm/command-r',
+						// 		}
+						// 	]
+						// },
+						{
+							label: '第三方工具集成',
+							items: [
+								{
+									label: 'Lobe-Chat',
+									link: '/others/integrations/lobe-chat',
+								}
+							]
+						},
+					]
 				},
 			],
 			plugins: [
