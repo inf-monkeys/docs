@@ -1,0 +1,82 @@
+---
+title: 集成到 One API
+description: 集成到 One API
+---
+
+此篇文档介绍如何将 Monkeys 的 OpenAI 兼容大语言模型接口接入到 [One API](https://github.com/songquanpeng/one-api) 中。One API 的安装说明请见其官方文档。
+
+### 1. 在 Monkeys 控制台创建大语言模型工作流
+
+工作流的创建过程详情见 [预置工具（大语言模型）](/docs/zh-cn/tools/builtin-tools-large-language-models)。
+
+有以下几点需要注意：
+
+1. 模型选择你需要使用的模型，这里我们选择 `alpindale/c4ai-command-r-plus-GPTQ`。
+
+![选择模型](~/assets/others/integrations/lobe-chat/choose-model.png)
+
+2. 在**开始**节点的**API 设置**中，设置*模型名称**名称为你希望的模型名称，这里我们设置为 `command-r`。
+
+> 默认情况下，Monkeys 的 OpenAI 接口对应的 `model` 参数为工作流 ID，你可以通过修改此值来设置模型名称。（同一个团队下模型名称不可重复）
+
+![设置模型名称](~/assets/others/integrations/lobe-chat/config-model-name.png)
+
+3. （可选）你可以为此工作流设置一个知识库上下文，这样大模型将自动能够使用知识库中的知识进行回答。
+
+> 详情见 [预置工具（私有数据搜索）](/docs/zh-cn/tools/builtin-tools-private-data-search)。
+
+这里我们添加一个客户服务的语料：
+
+![配置知识库](~/assets/others/integrations/lobe-chat/knowledge-base.png)
+
+
+### 2. 创建渠道
+
+在 One API 的**渠道**页面中，新建一个渠道，填写以下内容：
+
+- **类型**: 选择 OpenAI。
+- **名称**: 填入任意名称。
+- **分组**: 填入任意分组。
+- **模型**: 输入上面我们设置的自定义模型名称（见第一步设置的模型名称）
+- **密钥**: Monkeys 的 API Key，可在设置页面创建或获取。
+- **代理**: 填写 Monkeys 服务的地址，注意后面没有 `/v1` 后缀，如 `https://ai.infmonkeys.com`。
+
+![导入 Monkeys 接口](~/assets/others/integrations/one-api/add-channel.png)
+
+点击创建。
+
+#### 测试渠道连通性
+
+点击**测试**按钮，查看是否连通成功。
+
+![测试连通性](~/assets/others/integrations/one-api/test-channel.png)
+
+### 3. 创建令牌
+
+在 One API 的**令牌**页面中，新建一个令牌，填写以下内容：
+
+- **名称**: 填入任意名称。
+- **模型范围**: 选择上面我们添加的模型。
+
+![创建令牌](~/assets/others/integrations/one-api/add-channel.png)
+
+点击创建。
+
+### 4. 通过 API 接口调用
+
+> 修改下面的 API 地址、令牌、模型为你的实际地址、令牌和模型。
+
+```sh
+curl --location 'https://your-one-api-service.com/v1/chat/completions' \
+--header 'Authorization: Bearer sk-xxxxxxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "alpindale/c4ai-command-r-plus-GPTQ",
+    "messages": [
+        {"role": "user", "content": "Hello"},
+        {"role": "assistant", "content": "Hello, how can i help you today?"},
+        {"role": "user", "content": "What is today"}
+    ],
+    "stream": true
+}'
+```

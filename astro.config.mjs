@@ -290,6 +290,10 @@ export default defineConfig({
 								{
 									label: 'Lobe-Chat',
 									link: '/others/integrations/lobe-chat',
+								},
+								{
+									label: 'One API',
+									link: '/others/integrations/one-api',
 								}
 							]
 						},
