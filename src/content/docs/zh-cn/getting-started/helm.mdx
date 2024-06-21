@@ -24,12 +24,23 @@ description: 使用 Helm Chart 一键安装
 
 > monkeys-multi-tenancy 为多租户版，需要购买商业版授权才能使用，除非你是我们的商业合作伙伴，觉大多数情况下你都应该使用 monkeys 镜像。
 
+#### 核心服务
+
+| 服务名称                            | 镜像名称                         | DockerHub 地址                                            | OSS 下载地址                                                                                   |
+| ----------------------------------- | -------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| monkeys                             | infmonkeys/monkeys               | https://hub.docker.com/r/infmonkeys/monkeys               | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz               |
+| monkeys-multi-tenancy(OEM 多租户版) | infmonkeys/monkeys-multi-tenancy | https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz |
+| monkeys-ui                          | infmonkeys/monkeys-ui            | https://hub.docker.com/r/infmonkeys/monkeys-ui            | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz         |
+| monkeys-admin                       | infmonkeys/monkeys-admin         | https://hub.docker.com/r/infmonkeys/monkeys-admin         | https://static.infmonkeys.com/docker/monkeys/monkeys-admin/monkeys-admin-$RELEASE_TAG.tar.gz   |
+| conductor                           | infmonkeys/conductor             | https://hub.docker.com/r/infmonkeys/conductor             | https://static.infmonkeys.com/docker/monkeys/conductor/conductor-1.0.0.zip                     |
+| comfyui                             | infmonkeys/comfyui               | https://hub.docker.com/r/infmonkeys/comfyui               | https://static.infmonkeys.com/docker/monkeys/comfyui/comfyui-$RELEASE_TAG.tar.gz               |
+| nginx                               | nginx                            | https://hub.docker.com/_/nginx                            | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                         |
+| busybox                             | busybox:latest                   | https://hub.docker.com/_/busybox                          | https://static.infmonkeys.com/docker/opensource/busybox/busybox-latest.tar.gz                  |
+
+#### 各种工具服务
+
 | 服务名称                           | 镜像名称                                     | DockerHub 地址                                                        | OSS 下载地址                                                                                                                         |
 | ---------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| monkeys                            | infmonkeys/monkeys                           | https://hub.docker.com/r/infmonkeys/monkeys                           | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz                                                     |
-| monkeys-multi-tenancy              | infmonkeys/monkeys-multi-tenancy             | https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy             | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz                                       |
-| monkeys-ui                         | infmonkeys/monkeys-ui                        | https://hub.docker.com/r/infmonkeys/monkeys-ui                        | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz                                               |
-| conductor                          | infmonkeys/conductor                         | https://hub.docker.com/r/infmonkeys/conductor                         | https://static.infmonkeys.com/docker/monkeys/conductor/conductor-1.0.0.zip                                                           |
 | monkey-tools-sandbox               | infmonkeys/monkey-tools-sandbox              | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox              | https://static.infmonkeys.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-$RELEASE_TAG.tar.gz                           |
 | monkey-tools-knowledge-base        | infmonkeys/monkey-tools-knowledge-base       | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base       | https://static.infmonkeys.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-$RELEASE_TAG.tar.gz             |
 | monkey-tools-BepiPred3.0-Predictor | infmonkeys/monkey-tools-bepipred30-predictor | https://hub.docker.com/r/infmonkeys/monkey-tools-bepipred30-predictor | https://static.infmonkeys.com/docker/monkeys/monkey-tools-bepipred30-predictor/monkey-tools-bepipred30-predictor-$RELEASE_TAG.tar.gz |
@@ -37,9 +48,7 @@ description: 使用 Helm Chart 一键安装
 | comfyui                            | infmonkeys/comfyui                           | https://hub.docker.com/r/infmonkeys/comfyui                           | https://static.infmonkeys.com/docker/monkeys/comfyui/comfyui-$RELEASE_TAG.tar.gz                                                     |
 | monkey-tools-social-media          | infmonkeys/monkey-tools-social-media         | https://hub.docker.com/r/infmonkeys/monkey-tools-social-media         | https://static.infmonkeys.com/docker/monkeys/monkey-tools-social-media/monkey-tools-social-media-$RELEASE_TAG.tar.gz                 |
 | monkey-tools-internet              | infmonkeys/monkey-tools-internet             | https://hub.docker.com/r/infmonkeys/monkey-tools-internet             | https://static.infmonkeys.com/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz                         |
-| nginx                              | nginx                                        | https://hub.docker.com/_/nginx                                        | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                                                               |
 | piston（Python 沙箱）              | ghcr.io/engineer-man/piston                  | https://github.com/engineer-man/piston/pkgs/container/piston          | https://static.infmonkeys.com/docker/opensource/piston/piston-latest.zip                                                             |
-| busybox                            | busybox:latest                               | https://hub.docker.com/_/busybox                                      | https://static.infmonkeys.com/docker/opensource/busybox/busybox-latest.tar.gz                                                        |
 
 ### Python 沙箱（可选）
 

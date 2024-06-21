@@ -67,40 +67,31 @@ export default defineConfig({
 						},
 					],
 				},
-				{
-					label: '核心理念',
-					items: [
-						{
-							label: '大模型应用生命周期',
-							link: '/core-concepts/application-status',
-						},
-						{
-							label: '场景为先',
-							link: '/core-concepts/scenario-first',
-						},
-						{
-							label: '流程驱动',
-							link: '/core-concepts/flow-driven',
-						},
-						{
-							label: '持续迭代',
-							link: '/core-concepts/continuous-iteration',
-						},
-						{
-							label: '云原生高可用',
-							link: '/core-concepts/cloud-native',
-						},
-					],
-				},
-				{
-					label: '场景',
-					items: [
-						{
-							label: '微信舔狗机器人',
-							link: '/scenarios/simp-dog-wechatbot-simulator',
-						},
-					],
-				},
+				// {
+				// 	label: '核心理念',
+				// 	items: [
+				// 		{
+				// 			label: '大模型应用生命周期',
+				// 			link: '/core-concepts/application-status',
+				// 		},
+				// 		{
+				// 			label: '场景为先',
+				// 			link: '/core-concepts/scenario-first',
+				// 		},
+				// 		{
+				// 			label: '流程驱动',
+				// 			link: '/core-concepts/flow-driven',
+				// 		},
+				// 		{
+				// 			label: '持续迭代',
+				// 			link: '/core-concepts/continuous-iteration',
+				// 		},
+				// 		{
+				// 			label: '云原生高可用',
+				// 			link: '/core-concepts/cloud-native',
+				// 		},
+				// 	],
+				// },
 				{
 					label: '应用',
 					items: [
@@ -207,6 +198,15 @@ export default defineConfig({
 								},
 							]
 						}
+					],
+				},
+				{
+					label: '场景',
+					items: [
+						{
+							label: '微信舔狗机器人',
+							link: '/scenarios/simp-dog-wechatbot-simulator',
+						},
 					],
 				},
 				{
