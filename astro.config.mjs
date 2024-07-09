@@ -263,8 +263,13 @@ export default defineConfig({
 							link: '/cluster/multiple-replica-load-balancing',
 						},
 						{
-							label: '多副本弹性扩容',
-							link: '/cluster/multiple-replica-elastic-expansion',
+							label: '服务监控',
+							items: [
+								{
+									label: 'Prometheus & Grafana',
+									link: '/cluster/monitoring/prometheus-grafana',
+								},
+							]
 						},
 					],
 				},
