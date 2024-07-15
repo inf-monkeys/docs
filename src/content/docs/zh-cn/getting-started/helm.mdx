@@ -11,12 +11,9 @@ description: 使用 Helm Chart 一键安装
 
 ### Helm Chart 编排文件
 
-> 提供压缩包版和在线 GitHub 版。压缩包版用于在离线环境下部署，但是更新时间可能不及时。
-
-| 类型     | 更新时间 | 链接                                                                                                                                     |
-| -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 在线版   | -        | [https://github.com/inf-monkeys/monkeys-cloud](https://github.com/inf-monkeys/monkeys-cloud)                                             |
-| 压缩包版 | 240523   | [https://static.infmonkeys.com/docker/helm/monkeys-cloud-240523.zip](https://static.infmonkeys.com/docker/helm/monkeys-cloud-240523.zip) |
+| 类型     | 更新时间 | 链接                                                                                         |
+| -------- | -------- | -------------------------------------------------------------------------------------------- |
+| 在线地址 | -        | [https://github.com/inf-monkeys/helm-charts](https://github.com/inf-monkeys/helm-charts) |
 
 ### Docker 镜像地址
 
@@ -26,37 +23,37 @@ description: 使用 Helm Chart 一键安装
 
 #### 核心服务
 
-| 服务名称                                           | 镜像名称                         | DockerHub 地址                                            | OSS 下载地址                                                                                   |
-| -------------------------------------------------- | -------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| monkeys                                            | infmonkeys/monkeys               | https://hub.docker.com/r/infmonkeys/monkeys               | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz               |
-| monkeys-multi-tenancy(OEM 多租户版)                | infmonkeys/monkeys-multi-tenancy | https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy | https://static.infmonkeys.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz |
-| monkeys-ui                                         | infmonkeys/monkeys-ui            | https://hub.docker.com/r/infmonkeys/monkeys-ui            | https://static.infmonkeys.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz         |
-| monkeys-admin                                      | infmonkeys/monkeys-admin         | https://hub.docker.com/r/infmonkeys/monkeys-admin         | https://static.infmonkeys.com/docker/monkeys/monkeys-admin/monkeys-admin-$RELEASE_TAG.tar.gz   |
-| conductor                                          | infmonkeys/conductor-oss         | https://hub.docker.com/r/infmonkeys/conductor-oss         | https://static.infmonkeys.com/docker/opensource/conductor/conductor-oss-1.0.0.tar.gz              |
-| [one-api](https://github.com/songquanpeng/one-api) | justsong/one-api                 | https://hub.docker.com/r/justsong/one-api                 | https://static.infmonkeys.com/docker/opensource/oneapi/one-api-latest.zip                      |
-| nginx                                              | nginx                            | https://hub.docker.com/_/nginx                            | https://static.infmonkeys.com/docker/opensource/nginx/nginx-latest.zip                         |
-| busybox                                            | busybox:latest                   | https://hub.docker.com/_/busybox                          | https://static.infmonkeys.com/docker/opensource/busybox/busybox-latest.tar.gz                  |
+| 服务名称                                           | 镜像名称                         | DockerHub 地址                                            | OSS 下载地址                                                                                                      |
+| -------------------------------------------------- | -------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| monkeys                                            | infmonkeys/monkeys               | https://hub.docker.com/r/infmonkeys/monkeys               | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz               |
+| monkeys-multi-tenancy(OEM 多租户版)                | infmonkeys/monkeys-multi-tenancy | https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz |
+| monkeys-ui                                         | infmonkeys/monkeys-ui            | https://hub.docker.com/r/infmonkeys/monkeys-ui            | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz         |
+| monkeys-admin                                      | infmonkeys/monkeys-admin         | https://hub.docker.com/r/infmonkeys/monkeys-admin         | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys-admin/monkeys-admin-$RELEASE_TAG.tar.gz   |
+| conductor                                          | infmonkeys/conductor-oss         | https://hub.docker.com/r/infmonkeys/conductor-oss         | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/conductor-oss/conductor-oss-1.0.0.tar.gz           |
+| [one-api](https://github.com/songquanpeng/one-api) | justsong/one-api                 | https://hub.docker.com/r/justsong/one-api                 | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/oneapi/one-api-latest.zip                      |
+| nginx                                              | nginx                            | https://hub.docker.com/_/nginx                            | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/nginx/nginx-latest.zip                         |
+| busybox                                            | busybox:latest                   | https://hub.docker.com/_/busybox                          | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/busybox/busybox-latest.tar.gz                  |
 
 #### 各种工具服务
 
-| 服务名称                           | 镜像名称                                     | DockerHub 地址                                                        | OSS 下载地址                                                                                                                         |
-| ---------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| monkey-tools-sandbox               | infmonkeys/monkey-tools-sandbox              | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox              | https://static.infmonkeys.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-$RELEASE_TAG.tar.gz                           |
-| monkey-tools-knowledge-base        | infmonkeys/monkey-tools-knowledge-base       | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base       | https://static.infmonkeys.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-$RELEASE_TAG.tar.gz             |
-| monkey-tools-BepiPred3.0-Predictor | infmonkeys/monkey-tools-bepipred30-predictor | https://hub.docker.com/r/infmonkeys/monkey-tools-bepipred30-predictor | https://static.infmonkeys.com/docker/monkeys/monkey-tools-bepipred30-predictor/monkey-tools-bepipred30-predictor-$RELEASE_TAG.tar.gz |
-| monkey-tools-midjourney            | infmonkeys/monkey-tools-midjourney           | https://hub.docker.com/r/infmonkeys/monkey-tools-midjourney           | https://static.infmonkeys.com/docker/monkeys/monkey-tools-midjourney/monkey-tools-midjourney-$RELEASE_TAG.tar.gz                     |
-| comfyui                            | infmonkeys/comfyui                           | https://hub.docker.com/r/infmonkeys/comfyui                           | https://static.infmonkeys.com/docker/monkeys/comfyui/comfyui-$RELEASE_TAG.tar.gz                                                     |
-| monkey-tools-social-media          | infmonkeys/monkey-tools-social-media         | https://hub.docker.com/r/infmonkeys/monkey-tools-social-media         | https://static.infmonkeys.com/docker/monkeys/monkey-tools-social-media/monkey-tools-social-media-$RELEASE_TAG.tar.gz                 |
-| monkey-tools-internet              | infmonkeys/monkey-tools-internet             | https://hub.docker.com/r/infmonkeys/monkey-tools-internet             | https://static.infmonkeys.com/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz                         |
-| piston（Python 沙箱）              | ghcr.io/engineer-man/piston                  | https://github.com/engineer-man/piston/pkgs/container/piston          | https://static.infmonkeys.com/docker/opensource/piston/piston-latest.zip                                                             |
+| 服务名称                           | 镜像名称                                     | DockerHub 地址                                                        | OSS 下载地址                                                                                                                                            |
+| ---------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| monkey-tools-sandbox               | infmonkeys/monkey-tools-sandbox              | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox              | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-$RELEASE_TAG.tar.gz                           |
+| monkey-tools-knowledge-base        | infmonkeys/monkey-tools-knowledge-base       | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base       | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-$RELEASE_TAG.tar.gz             |
+| monkey-tools-BepiPred3.0-Predictor | infmonkeys/monkey-tools-bepipred30-predictor | https://hub.docker.com/r/infmonkeys/monkey-tools-bepipred30-predictor | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-bepipred30-predictor/monkey-tools-bepipred30-predictor-$RELEASE_TAG.tar.gz |
+| monkey-tools-midjourney            | infmonkeys/monkey-tools-midjourney           | https://hub.docker.com/r/infmonkeys/monkey-tools-midjourney           | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-midjourney/monkey-tools-midjourney-$RELEASE_TAG.tar.gz                     |
+| comfyui                            | infmonkeys/comfyui                           | https://hub.docker.com/r/infmonkeys/comfyui                           | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/comfyui/comfyui-$RELEASE_TAG.tar.gz                                                     |
+| monkey-tools-social-media          | infmonkeys/monkey-tools-social-media         | https://hub.docker.com/r/infmonkeys/monkey-tools-social-media         | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-social-media/monkey-tools-social-media-$RELEASE_TAG.tar.gz                 |
+| monkey-tools-internet              | infmonkeys/monkey-tools-internet             | https://hub.docker.com/r/infmonkeys/monkey-tools-internet             | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz                         |
+| piston（Python 沙箱）              | ghcr.io/engineer-man/piston                  | https://github.com/engineer-man/piston/pkgs/container/piston          | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/piston/piston-latest.zip                                                             |
 
 ### Python 沙箱（可选）
 
 > 用于在离线环境下部署 Python Runtime，如果为在线环境，或者不需要用到 Python 自定义代码功能，可以忽略。
 
-| 版本号 | 下载地址                                                                 |
-| ------ | ------------------------------------------------------------------------ |
-| 3.10.0 | https://static.infmonkeys.com/docker/monkeys/piston/python-3.10.0.tar.gz |
+| 版本号 | 下载地址                                                                                    |
+| ------ | ------------------------------------------------------------------------------------------- |
+| 3.10.0 | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/piston/python-3.10.0.tar.gz |
 
 ## 部署文档
 
