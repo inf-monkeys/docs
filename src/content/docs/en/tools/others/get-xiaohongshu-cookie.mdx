@@ -1,0 +1,44 @@
+---
+title: How to Get Xiaohongshu Cookie
+description: How to Get Xiaohongshu Cookie
+---
+
+This article explains how to get the Cookie from Xiaohongshu web version.
+
+## Notes
+
+1. Both the web version and the creator service platform need to be logged in with the same account.
+2. The Cookie may expire after a period of time and needs to be obtained again.
+3. Logging out will cause the Cookie to expire.
+
+## Steps
+
+### 1. Log in to Xiaohongshu Web Version
+
+Visit [https://www.xiaohongshu.com](https://www.xiaohongshu.com) in your browser and log in to your account.
+
+### 2. Log in to Xiaohongshu Creator Service Platform
+
+Visit [https://creator.xiaohongshu.com](https://creator.xiaohongshu.com) in your browser and log in with the **same account**.
+
+> Note: Both the web version and the creator service platform need to be logged in with the same account.
+
+### 3. Open Developer Tools
+
+Right-click on the web page, select **Inspect**, open the developer tools, and switch to the **Network** tab.
+
+![Xiaohongshu Developer Tools](~/assets/tools/others/xiaohongshu/dev-tools.png)
+
+### 4. Get the Cookie
+
+Post any note:
+
+![Xiaohongshu Developer Tools](~/assets/tools/others/xiaohongshu/test-post.png)
+
+Observe the requests in the developer tools, find the `POST` request with the URL `https://edith.xiaohongshu.com/web_api/sns/v2/note`:
+
+![Xiaohongshu Developer Tools](~/assets/tools/others/xiaohongshu/find-note-api.png)
+
+In the `Request Headers`, find the `Cookie` field, which is the Xiaohongshu Cookie:
+
+![Xiaohongshu Developer Tools](~/assets/tools/others/xiaohongshu/get-cookie.png)

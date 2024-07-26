@@ -1,0 +1,65 @@
+---
+title: Getting Started
+description: Quick start guide for Monkeys
+---
+
+## Quick Start
+
+Welcome to Monkeys! This guide will help you get started with Monkeys quickly.
+
+## Using Cloud Services
+
+Monkeys provides an online service that allows you to experience its features without setting up a complete environment. You can register using your email or phone number. New users enjoy a certain amount of free quota to experience Monkeys' features.
+
+## Using Docker Compose
+
+### Deployment Architecture
+
+![Deployment Architecture](~/assets/installation/helm-architecture.png)
+
+### Deployment Steps
+
+#### Step 1: Deploy Core
+
+The core components include monkeys, monkeys-ui, and conductor, which provide core workflow capabilities and an OpenAI-compatible large language model interface.
+
+For detailed documentation, please refer to: [https://github.com/inf-monkeys/monkeys/blob/main/docker/README.md](https://github.com/inf-monkeys/monkeys/blob/main/docker/README.md)
+
+Note:
+- Nginx is used as a reverse proxy to route requests to the monkeys frontend and backend, and the monkeys-proxy service provides external services.
+
+#### Step 2: Deploy Tools
+
+In the Monkeys architecture, tools are pluggable components that provide different functionalities, such as sandbox tools, knowledge base tools, image processing tools, etc. You can read [this document](/docs/en/tools/build-custom-tools) to understand why developing custom tools is important.
+
+For a list of tools, please refer to: [https://github.com/inf-monkeys/awesome-monkey-tools](https://github.com/inf-monkeys/awesome-monkey-tools)
+
+#### Step 3: Import Tools into Monkeys Console
+
+- Enter the console and initialize an account by entering any email address.
+- In the **Execution Tools** page, click the **Import** button in the upper right corner and enter the manifest address of the tools (format: `http://CONTAINER_HOST:CONTAINER_PORT/manifest.json`).
+
+![Import Tool](~/assets/installation/import-tool.png)
+
+#### Step 4: Verify Functionality
+
+- Each team will have two default workflows:
+  - Multi-turn conversation with a large language model
+  - Single-turn conversation with a large language model
+
+![Default Workflow](~/assets/installation/default-workflow.png)
+
+- Enter the workflow details
+  - Select a model
+  - Configure the knowledge base context (optional)
+
+![Configure Model](~/assets/installation/config-model.png)
+
+- Click the integration center in the upper right corner to see the API usage documentation
+
+![API Documentation](~/assets/installation/api-doc.png)
+
+- Copy to the command line terminal and execute:
+  - If it runs successfully, the functionality is normal
+
+![Run in Terminal](~/assets/installation/run-in-terminal.png)

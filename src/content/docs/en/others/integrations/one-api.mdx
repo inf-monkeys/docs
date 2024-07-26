@@ -1,0 +1,81 @@
+---
+title: Integrate with One API
+description: Integrate with One API
+---
+
+This document describes how to integrate Monkeys' OpenAI-compatible large language model interface into [One API](https://github.com/songquanpeng/one-api). For installation instructions of One API, please refer to its official documentation.
+
+### 1. Create a large language model workflow in the Monkeys console
+
+For detailed steps on creating a workflow, see [Built-in Tools (Large Language Models)](/docs/en/tools/builtin-tools-large-language-models).
+
+There are a few points to note:
+
+1. Select the model you need to use. Here we choose `alpindale/c4ai-command-r-plus-GPTQ`.
+
+![Select Model](~/assets/others/integrations/lobe-chat/choose-model.png)
+
+2. In the **API Settings** of the **Start** node, set the *Model Name* to the desired model name. Here we set it to `command-r`.
+
+> By default, the `model` parameter of Monkeys' OpenAI interface corresponds to the workflow ID. You can modify this value to set the model name. (Model names must be unique within the same team)
+
+![Set Model Name](~/assets/others/integrations/lobe-chat/config-model-name.png)
+
+3. (Optional) You can set a knowledge base context for this workflow, allowing the large model to automatically use the knowledge in the knowledge base to answer questions.
+
+> For details, see [Built-in Tools (Private Data Search)](/docs/en/tools/builtin-tools-private-data-search).
+
+Here we add a customer service corpus:
+
+![Configure Knowledge Base](~/assets/others/integrations/lobe-chat/knowledge-base.png)
+
+### 2. Create a channel
+
+In the **Channels** page of One API, create a new channel and fill in the following information:
+
+- **Type**: Select OpenAI.
+- **Name**: Enter any name.
+- **Group**: Enter any group.
+- **Model**: Enter the custom model name we set above (see step 1).
+- **Key**: Monkeys' API Key, which can be created or obtained on the settings page.
+- **Proxy**: Fill in the address of the Monkeys service, without the `/v1` suffix, e.g., `https://ai.infmonkeys.com`.
+
+![Add Channel](~/assets/others/integrations/one-api/add-channel.png)
+
+Click create.
+
+#### Test Channel Connectivity
+
+Click the **Test** button to check if the connection is successful.
+
+![Test Channel](~/assets/others/integrations/one-api/test-channel.png)
+
+### 3. Create a token
+
+In the **Tokens** page of One API, create a new token and fill in the following information:
+
+- **Name**: Enter any name.
+- **Model Scope**: Select the model we added above.
+
+![Create Token](~/assets/others/integrations/one-api/add-channel.png)
+
+Click create.
+
+### 4. Call the API
+
+> Modify the API address, token, and model to your actual address, token, and model.
+
+```sh
+curl --location 'https://your-one-api-service.com/v1/chat/completions' \
+--header 'Authorization: Bearer sk-xxxxxxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "alpindale/c4ai-command-r-plus-GPTQ",
+    "messages": [
+        {"role": "user", "content": "Hello"},
+        {"role": "assistant", "content": "Hello, how can i help you today?"},
+        {"role": "user", "content": "What is today"}
+    ],
+    "stream": true
+}'
+```

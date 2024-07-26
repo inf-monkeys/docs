@@ -1,0 +1,55 @@
+---
+title: WeChat Simp Dog Bot
+description: WeChat Simp Dog Bot
+---
+
+## Application Dependencies
+
+This application depends on the following components:
+
+| Package                                                                                    | Description                 | Installation Guide                                                                                                           |
+| ------------------------------------------------------------------------------------------ | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Monkeys Core Components](https://github.com/inf-monkeys/monkeys)|  Monkeys core components, necessary for running this application. | You can use the [Monkeys Cloud](https://ai.infmonkeys.com) version, or refer to the local installation guide.  |
+| [monkey-tools-wechaty](https://github.com/inf-monkeys/monkey-tools-wechaty)| Monkeys Wechaty tool, based on [wechaty](https://github.com/wechaty/wechaty), allows receiving and sending WeChat messages.  | Please refer to the [monkey-tools-wechaty](https://github.com/inf-monkeys/monkey-tools-wechaty) installation guide |
+
+## Video Demonstration
+
+## Detailed Steps
+
+### Step 1: Import Wechaty Tool in the Console
+
+After starting the monkey-tools-wechaty project, import it in the Monkeys console:
+
+> In this example, the Manifest json address is https://localhost:3009/manifest.json
+
+![](~/assets/showcases/simp-dog/import-monkey-tools-wechaty.png)
+
+### Step 2: Create a Workflow and Set the Trigger Type to WeChat Message
+
+In the **Start Node**, create a trigger of type **WeChat Message**:
+
+![](~/assets/showcases/simp-dog/create-trigger.png)
+
+Follow the instructions to complete the login by scanning the QR code, and set the message type to Text (text message), and the sender's nickname to your goddess 🤡:
+
+![](~/assets/showcases/simp-dog/trigger-config.png)
+
+### Step 3: Add a Text Generation (GPT) Node
+
+Here, we set the Prompt to:
+
+```text
+I am a simp dog, pursuing a girl. Please analyze the meaning of her words based on the information I provide and generate a reply that is flattering but not over the top, making her feel comfortable. If you are unsure about what she is saying, reply with "Hmm, okay, I got it, great👍". Do not add any meaningless content to the reply, so that others do not perceive you as a robot.
+
+Message from the goddess: ${workflow.input.msgContent}
+
+Your reply:
+```
+
+![](~/assets/showcases/simp-dog/example-prompt.png)
+
+### Step 4: Test on WeChat
+
+Congratulations, the simp dog bot is now online 🤡, go pursue your goddess!
+
+![](~/assets/showcases/simp-dog/wechat-test.png)

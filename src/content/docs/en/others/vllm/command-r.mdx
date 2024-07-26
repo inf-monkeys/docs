@@ -1,0 +1,38 @@
+---
+title: Using VLLM to Deploy Command+R
+description: Using VLLM to Deploy Command+R
+---
+
+This document describes how to use VLLM to deploy the Command+R model.
+
+### 1. Install VLLM
+
+Follow the instructions in the [VLLM documentation](https://docs.vllm.ai/en/latest/installation.html) to install VLLM.
+
+### 2. Download the Command+R model
+
+Download the Command+R model from [Hugging Face](https://huggingface.co/alpindale/c4ai-command-r-plus-GPTQ).
+
+### 3. Deploy the model using VLLM
+
+Use the following command to deploy the model using VLLM:
+
+```sh
+vllm serve --model alpindale/c4ai-command-r-plus-GPTQ
+```
+
+### 4. Test the deployment
+
+Use the following command to test the deployment:
+
+```sh
+curl -X POST http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "alpindale/c4ai-command-r-plus-GPTQ",
+    "prompt": "Hello, how are you?",
+    "max_tokens": 50
+  }'
+```
+
+You should see a response from the model.
