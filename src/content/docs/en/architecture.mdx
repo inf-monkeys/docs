@@ -1,0 +1,41 @@
+---
+title: Monkeys Architecture Design
+description: Monkeys Architecture Design
+---
+
+## Monkeys Architecture Design
+
+Monkeys is designed with a modular architecture to provide flexibility and scalability. The core components include Monkeys Server, Monkeys UI, and Conductor. These components work together to provide core workflow capabilities and an OpenAI-compatible large language model interface.
+
+### Core Components
+
+#### Monkeys Server
+
+Monkeys Server is the core service that provides the main functionalities of Monkeys. It handles the execution of workflows, manages the state of tasks, and provides an API for external integrations.
+
+#### Monkeys UI
+
+Monkeys UI is the web-based user interface for Monkeys. It allows users to create, manage, and monitor workflows. The UI is designed to be user-friendly and provides a visual representation of workflows.
+
+#### Conductor
+
+Conductor is the workflow orchestration engine used by Monkeys. It is responsible for scheduling and executing tasks within a workflow. Conductor provides a scalable and reliable way to manage complex workflows.
+
+### Deployment Architecture
+
+Monkeys can be deployed in various environments, including cloud services and on-premises. The deployment architecture includes the following components:
+
+- **Nginx**: Used as a reverse proxy to route requests to the Monkeys frontend and backend services.
+- **Monkeys Proxy**: Provides external services and acts as a gateway for incoming requests.
+- **Tools**: Pluggable components that provide additional functionalities, such as sandbox tools, knowledge base tools, and image processing tools.
+
+### Integration with External Services
+
+Monkeys can be integrated with various external services to extend its capabilities. Some of the common integrations include:
+
+- **Prometheus & Grafana**: Used for monitoring the performance and health of Monkeys services.
+- **VLLM**: Used to deploy and manage large language models compatible with OpenAI's API.
+
+### Conclusion
+
+The modular architecture of Monkeys allows for easy customization and scalability. By leveraging core components and integrating with external services, Monkeys provides a powerful platform for building workflow-centric AI applications.

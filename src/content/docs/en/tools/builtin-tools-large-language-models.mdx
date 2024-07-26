@@ -1,0 +1,141 @@
+---
+title: Built-in Tools (Large Language Models)
+description: Built-in Tools (Large Language Models)
+---
+
+| -        | Description                                                                   |
+| -------- | ---------------------------------------------------------------------- |
+| Project Address | https://github.com/inf-monkeys/monkeys/tree/main/src/modules/tools/llm |
+| Installation Steps | The large language model tool is built into [https://github.com/inf-monkeys/monkeys](https://github.com/inf-monkeys/monkeys), no additional installation is required. However, if you need to use a local model, you may need to use tools like [vllm](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html) to deploy an OpenAI-compatible large language model interface locally. |
+| Supported LLM Model List | Any large language model that meets the OpenAI interface standard is supported, such as ChatGPT, Azure ChatGPT, models deployed by VLLM, etc. |
+
+## Deploying Models (Optional)
+
+If you need to use a local model, you may need to use tools like [vllm](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html) to deploy an OpenAI-compatible large language model interface locally.
+
+After deployment, you can configure the large language model tool in `config.yaml` so that Monkeys can call your local large language model interface.
+
+## Configuration
+
+Add the following large language model tool configuration items to `config.yaml` in [monkeys](https://github.com/inf-monkeys/monkeys):
+
+| Parameter            | Description                                                                                                                           | Default Value |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| `model`         | Model name, such as `gpt-3.5-turbo`                                                                                                 |        |
+| `baseURL`       | Access address, such as `https://api.openai.com/v1`                                                                                       |        |
+| `apiKey`        | APIKey, if not available, leave blank.                                                                                                       |        |
+| `type`          | The type of this model, optional values are `chat_completions` and `completions`, indicating whether it is a chat model or a text completion model. If not filled, it means both methods are supported. | `""`   |
+| `defaultParams` | Default request parameters, for example, some models like `Qwen/Qwen-7B-Chat-Int4` need to set top parameters.                                                     |        |
+
+
+Here is an example:
+
+```yaml
+models:
+  - model: gpt-3.5-turbo
+    baseURL: https://api.openai.com/v1
+    apiKey: xxxxxxxxxxxxxx
+    type:
+      - chat_completions
+  - model: davinci-002
+    baseURL: https://api.openai.com/v1
+    apiKey: xxxxxxxxxxxxxx
+    type:
+      - completions
+  - model: Qwen/Qwen-7B-Chat-Int4
+    baseURL: http://127.0.0.1:8000/v1
+    apiKey: token-abc123
+    defaultParams:
+      stop:
+        - <|im_end|>
+        - <|im_end|>
+```
+
+## Quick Use
+
+### Using the Conversation View
+
+After creating a team, each team will have two default workflows:
+
+- Multi-turn conversation with a large language model
+- Single-turn conversation with a large language model
+
+![](~/assets/installation/default-workflow.png)
+
+Enter the workflow details, select a model, and configure the knowledge base context (optional).
+
+![](~/assets/installation/config-model.png)
+
+
+Switch to the conversation view, and you can start a conversation with the large language model here.
+
+![](~/assets/tools/llm/chat.png)
+
+
+### Calling the API Interface
+
+Click the integration center in the upper right corner to see the API usage documentation:
+
+![](~/assets/installation/api-doc.png)
+
+You can copy it to the command line terminal, and if it runs successfully, the functionality is normal.
+
+![](~/assets/installation/run-in-terminal.png)
+
+## Let AI Automatically Use Tools
+
+> Note: Not all large language models support the `tools` parameter of ChatGPT.
+
+Here we take weather query as an example. The large language model itself does not have the ability to query the weather in real-time, but we can use the weather query tool to let the large language model automatically call the weather query tool. Here we need to use the project [https://github.com/inf-monkeys/monkey-tools-template-flask](https://github.com/inf-monkeys/monkey-tools-template-flask).
+
+After deploying the weather query tool, select the **Weather Query** tool in the tool list of the **Large Language Model Multi-turn Conversation** node:
+
+![](~/assets/tools/llm/auto-call-tools.png)
+
+Click save. Copy the CURL command to the terminal and run:
+
+```sh
+curl -X POST 'http://localhost:2048/v1/chat/completions' \
+--header 'Authorization: Bearer sk-sssssssssssssssssssssssssssss' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "model": "workflow id",
+    "messages": [{"role": "user", "content": "How is the weather in Beijing today?"}],
+    "stream": false
+}'
+```
+
+You can see that ChatGPT correctly answered the weather in Beijing that day:
+
+```json
+{
+  "id": "chatcmpl-9LnNw1hDo1SxckOrMqWPR5mRYV9pZ",
+  "object": "chat.completion",
+  "created": 1714981752,
+  "model": "gpt-4-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The current temperature in Beijing is 25.8°C, and the wind speed is 4.7 km/h."
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3772,
+    "completion_tokens": 27,
+    "total_tokens": 3799
+  }
+}
+```
+
+Check the monkeys log, you can see that the large language model successfully called the weather query tool:
+
+![](~/assets/tools/llm/call-tool.png)
+
+## Adding a Private Knowledge Base for AI
+
+For detailed usage, please refer to the [Private Data Search](/docs/en/tools/builtin-tools-private-data-search) documentation.

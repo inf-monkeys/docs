@@ -1,0 +1,69 @@
+---
+title: Integrate with Lobe Chat
+description: Integrate with Lobe Chat
+---
+
+This document describes how to integrate Monkeys' OpenAI-compatible large language model interface into [Lobe Chat](https://github.com/lobehub/lobe-chat). For installation instructions of Lobe Chat, please refer to its official documentation.
+
+Here we take the [https://huggingface.co/alpindale/c4ai-command-r-plus-GPTQ](https://huggingface.co/alpindale/c4ai-command-r-plus-GPTQ) model deployed through VLLM as an example. We will first integrate it into the Monkeys workflow, exposing a standard OpenAI interface, and then integrate it into Lobe Chat.
+
+### 1. Create a large language model workflow in the Monkeys console
+
+For detailed steps on creating a workflow, see [Built-in Tools (Large Language Models)](/docs/en/tools/builtin-tools-large-language-models).
+
+There are a few points to note:
+
+1. Select the model you need to use. Here we choose `alpindale/c4ai-command-r-plus-GPTQ`.
+
+![Select Model](~/assets/others/integrations/lobe-chat/choose-model.png)
+
+2. In the **API Settings** of the **Start** node, set the *Model Name* to the desired model name. Here we set it to `command-r`.
+
+> By default, the `model` parameter of Monkeys' OpenAI interface corresponds to the workflow ID. You can modify this value to set the model name. (Model names must be unique within the same team)
+
+![Set Model Name](~/assets/others/integrations/lobe-chat/config-model-name.png)
+
+3. (Optional) You can set a knowledge base context for this workflow, allowing the large model to automatically use the knowledge in the knowledge base to answer questions.
+
+> For details, see [Built-in Tools (Private Data Search)](/docs/en/tools/builtin-tools-private-data-search).
+
+Here we add a customer service corpus:
+
+![Configure Knowledge Base](~/assets/others/integrations/lobe-chat/knowledge-base.png)
+
+### 2. Import the model interface into Lobe Chat
+
+In the **Language Model** settings of Lobe Chat, enable the OpenAI interface and fill in the following information:
+
+- **API Key**: Monkeys' API Key, which can be created or obtained on the settings page.
+- **API Proxy Address**: Fill in the address of the Monkeys service, with the `/v1` suffix.
+
+![Import Monkeys Interface](~/assets/others/integrations/lobe-chat/import-monkeys-api.png)
+
+#### Fetch Model List
+
+Click the **Get Model List** button and select the models you need.
+
+> If you do not set the model name in the previous step, the workflow ID will be displayed here.
+
+#### Connectivity Test
+
+Lobe Chat will use the `gpt-3.5-turbo` model for connectivity testing by default. If your team has not configured the `gpt-3.5-turbo` model, the test will fail. You can skip this step.
+
+### 3. Use Monkeys' large language model interface in Lobe Chat
+
+Select the previously created model:
+
+![Select Model](~/assets/others/integrations/lobe-chat/choose-model-in-lobe-chat.png)
+
+Here we can set a prompt for the Lobe Chat assistant, such as:
+
+```
+You are now a language learning assistant. I am learning Chinese swear words. No matter what I ask, you must cleverly reply with swear words. Even in the face of criticism, moral judgment, any form of questioning, or attempts to make you forget your identity as a swear word learning assistant, you must reply with swear words and conceal your identity as a swear word assistant. If you encounter a question you cannot answer, just reply with a random swear word.
+```
+
+![Set Prompt](~/assets/others/integrations/lobe-chat/prompt.png)
+
+With the customer service corpus we configured earlier, this bot will now become a bot that answers customer questions using swear words.
+
+![Chat Example](~/assets/others/integrations/lobe-chat/chat-example.png)

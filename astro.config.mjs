@@ -51,254 +51,373 @@ export default defineConfig({
 			locales,
 			sidebar: [
 				{
-					label: '快速开始',
+					label: 'Getting Started',
+					translations: {
+						'zh-CN': '快速开始',
+					},
 					items: [
 						{
-							label: '使用云服务',
+							label: 'Using Cloud Services',
 							link: '/getting-started/cloud-service',
+							translations: {
+								'zh-CN': '使用云服务',
+							},
 						},
 						{
-							label: 'Helm 部署',
+							label: 'Using Helm Chart for One-Click Installation',
 							link: '/getting-started/helm',
+							translations: {
+								'zh-CN': 'Helm 部署',
+							},
 						},
 						{
-							label: 'Docker Compose 部署',
+							label: 'Using Docker Compose for One-Click Installation',
 							link: '/getting-started/docker-compose',
+							translations: {
+								'zh-CN': 'Docker Compose 部署',
+							},
 						},
 					],
 				},
-				// {
-				// 	label: '核心理念',
-				// 	items: [
-				// 		{
-				// 			label: '大模型应用生命周期',
-				// 			link: '/core-concepts/application-status',
-				// 		},
-				// 		{
-				// 			label: '场景为先',
-				// 			link: '/core-concepts/scenario-first',
-				// 		},
-				// 		{
-				// 			label: '流程驱动',
-				// 			link: '/core-concepts/flow-driven',
-				// 		},
-				// 		{
-				// 			label: '持续迭代',
-				// 			link: '/core-concepts/continuous-iteration',
-				// 		},
-				// 		{
-				// 			label: '云原生高可用',
-				// 			link: '/core-concepts/cloud-native',
-				// 		},
-				// 	],
-				// },
 				{
-					label: '应用',
+					label: 'Applications',
+					translations: {
+						'zh-CN': '应用',
+					},
 					items: [
 						{
-							label: '应用构建',
+							label: 'Application Building',
 							link: '/applications/application-building',
+							translations: {
+								'zh-CN': '应用构建',
+							},
 						},
 						{
-							label: '应用集成',
+							label: 'Application Integration',
 							link: '/applications/application-integration',
+							translations: {
+								'zh-CN': '应用集成',
+							},
 						},
 						{
-							label: '应用可观测性',
+							label: 'Application Observability',
 							link: '/applications/application-observability',
+							translations: {
+								'zh-CN': '应用可观测性',
+							},
 						},
 						{
-							label: '应用智能',
+							label: 'Application Intelligence',
 							link: '/applications/application-intelligence',
+							translations: {
+								'zh-CN': '应用智能',
+							},
 						},
 						{
-							label: '典型应用示例',
+							label: 'Application Examples',
 							link: '/applications/application-examples',
+							translations: {
+								'zh-CN': '典型应用示例',
+							},
 						},
 					],
 				},
 				{
-					label: '流程',
+					label: 'Flow',
+					translations: {
+						'zh-CN': '流程',
+					},
 					items: [
 						{
-							label: '流程声明式语法',
+							label: 'Flow Schema',
 							link: '/flow/flow-schema',
+							translations: {
+								'zh-CN': '流程声明式语法',
+							},
 						},
 						{
-							label: '流程可视化配置',
+							label: 'Visualization Configuration',
 							link: '/flow/visualization-configuration',
+							translations: {
+								'zh-CN': '流程可视化配置',
+							},
 						},
 						{
-							label: '流程控制',
+							label: 'Flow Control',
 							link: '/flow/flow-control',
+							translations: {
+								'zh-CN': '流程控制',
+							},
 						},
 						{
-							label: '流程智能',
+							label: 'Flow Intelligence',
 							link: '/flow/flow-intelligence',
+							translations: {
+								'zh-CN': '流程智能',
+							},
 						},
 					],
 				},
 				{
-					label: '工具',
+					label: 'Tools',
+					translations: {
+						'zh-CN': '工具',
+					},
 					items: [
 						{
-							label: '工具声明式语法',
+							label: 'Declarative Syntax',
 							link: '/tools/declarative-syntax',
+							translations: {
+								'zh-CN': '工具声明式语法',
+							},
 						},
 						{
-							label: '工具列表',
+							label: 'Tool List',
 							link: '/tools/tool-list',
+							translations: {
+								'zh-CN': '工具列表',
+							},
 						},
 						{
-							label: '预置工具（大语言模型）',
+							label: 'Built-in Tools (Large Language Models)',
 							link: '/tools/builtin-tools-large-language-models',
+							translations: {
+								'zh-CN': '预置工具（大语言模型）',
+							},
 						},
 						{
-							label: '预置工具（多模态模型）',
+							label: 'Built-in Tools (Multimodal Models)',
 							link: '/tools/builtin-tools-multimodal-models',
+							translations: {
+								'zh-CN': '预置工具（多模态模型）',
+							},
 						},
 						{
-							label: '预置工具（数据处理）',
+							label: 'Built-in Tools (Data Processing)',
 							link: '/tools/builtin-tools-data-processing',
+							translations: {
+								'zh-CN': '预置工具（数据处理）',
+							},
 						},
 						{
-							label: '预置工具（私有数据搜索）',
+							label: 'Built-in Tools (Private Data Search)',
 							link: '/tools/builtin-tools-private-data-search',
+							translations: {
+								'zh-CN': '预置工具（私有数据搜索）',
+							},
 						},
 						{
-							label: '预置工具（文件处理）',
+							label: 'Built-in Tools (File Handling)',
 							link: '/tools/builtin-tools-file-handling',
+							translations: {
+								'zh-CN': '预置工具（文件处理）',
+							},
 						},
 						{
-							label: '预置工具（自动化）',
+							label: 'Built-in Tools (Automation)',
 							link: '/tools/builtin-tools-automation',
+							translations: {
+								'zh-CN': '预置工具（自动化）',
+							},
 						},
 						{
-							label: '预置工具（模型训练）',
+							label: 'Built-in Tools (Model Training)',
 							link: '/tools/builtin-tools-model-training',
+							translations: {
+								'zh-CN': '预置工具（模型训练）',
+							},
 						},
 						{
-							label: '预置工具（模型测评）',
+							label: 'Built-in Tools (Model Evaluation)',
 							link: '/tools/builtin-tools-model-evaluation',
+							translations: {
+								'zh-CN': '预置工具（模型测评）',
+							},
 						},
 						{
-							label: '使用自定义工具',
+							label: 'Use Custom Tools',
 							link: '/tools/use-custom-tools',
+							translations: {
+								'zh-CN': '使用自定义工具',
+							},
 						},
 						{
-							label: '开发自定义工具',
+							label: 'Build Custom Tools',
 							link: '/tools/build-custom-tools',
+							translations: {
+								'zh-CN': '开发自定义工具',
+							},
 						},
 						{
-							label: '其他',
+							label: 'Others',
 							items: [
 								{
-									label: '如何获取小红书 Cookie',
+									label: 'How to Get Xiaohongshu Cookie',
 									link: '/tools/others/get-xiaohongshu-cookie',
+									translations: {
+										'zh-CN': '如何获取小红书 Cookie',
+									},
 								},
 							]
 						}
 					],
 				},
 				{
-					label: '场景',
+					label: 'Scenarios',
+					translations: {
+						'zh-CN': '场景',
+					},
 					items: [
 						{
-							label: '微信舔狗机器人',
+							label: 'WeChat Simp Dog Bot',
 							link: '/scenarios/simp-dog-wechatbot-simulator',
+							translations: {
+								'zh-CN': '微信舔狗机器人',
+							},
 						},
 					],
 				},
 				{
-					label: '组织',
+					label: 'Organization',
+					translations: {
+						'zh-CN': '组织',
+					},
 					items: [
 						{
-							label: '身份',
+							label: 'Identity',
 							link: '/org/identity',
+							translations: {
+								'zh-CN': '身份',
+							},
 						},
 						{
-							label: '数据隔离',
+							label: 'Data Isolation',
 							link: '/org/data-isolation',
+							translations: {
+								'zh-CN': '数据隔离',
+							},
 						},
 						{
-							label: '多人协同',
+							label: 'Multi-Person Collaboration',
 							link: '/org/multi-person-collaboration',
+							translations: {
+								'zh-CN': '多人协同',
+							},
 						},
 						{
-							label: '权限控制',
+							label: 'Permission Control',
 							link: '/org/permission-control',
+							translations: {
+								'zh-CN': '权限控制',
+							},
 						},
 					],
 				},
 				{
-					label: '容器',
+					label: 'Container',
+					translations: {
+						'zh-CN': '容器',
+					},
 					items: [
 						{
-							label: '工具镜像',
+							label: 'Tool Images',
 							link: '/container/tool-images',
+							translations: {
+								'zh-CN': '工具镜像',
+							},
 						},
 						{
-							label: '服务镜像',
+							label: 'Service Images',
 							link: '/container/service-images',
+							translations: {
+								'zh-CN': '服务镜像',
+							},
 						},
 						{
-							label: '中间件镜像',
+							label: 'Middleware Images',
 							link: '/container/middleware-images',
+							translations: {
+								'zh-CN': '中间件镜像',
+							},
 						},
 					],
 				},
 				{
-					label: '集群',
+					label: 'Cluster',
+					translations: {
+						'zh-CN': '集群',
+					},
 					items: [
 						{
-							label: '构建云原生集群',
+							label: 'Building Cloud Native Cluster',
 							link: '/cluster/building-cloud-native-cluster',
+							translations: {
+								'zh-CN': '构建云原生集群',
+							},
 						},
 						{
-							label: 'Helm 部署和更新',
+							label: 'Helm Deploy and Update',
 							link: '/cluster/helm-deploy-update',
+							translations: {
+								'zh-CN': 'Helm 部署和更新',
+							},
 						},
 						{
-							label: '多副本负载均衡',
+							label: 'Multiple Replica Load Balancing',
 							link: '/cluster/multiple-replica-load-balancing',
+							translations: {
+								'zh-CN': '多副本负载均衡',
+							},
 						},
 						{
-							label: '服务监控',
+							label: 'Service Monitoring',
+							translations: {
+								'zh-CN': '服务监控',
+							},
 							items: [
 								{
 									label: 'Prometheus & Grafana',
 									link: '/cluster/monitoring/prometheus-grafana',
+									translations: {
+										'zh-CN': 'Prometheus & Grafana',
+									},
 								},
 							]
 						},
 					],
 				},
 				{
-					label: '算力',
+					label: 'Computing Power',
 					link: '/computing-power',
+					translations: {
+						'zh-CN': '算力',
+					},
 				},
 				{
-					label: '扩展阅读',
+					label: 'Further Reading',
+					translations: {
+						'zh-CN': '扩展阅读',
+					},
 					items: [
-						// {
-						// 	label: 'VLLM 本地部署大模型',
-						// 	items: [
-						// 		{
-						// 			label: 'Command+R',
-						// 			link: '/others/vllm/command-r',
-						// 		}
-						// 	]
-						// },
 						{
-							label: '第三方工具集成',
+							label: 'Third-Party Tool Integration',
+							translations: {
+								'zh-CN': '第三方工具集成',
+							},
 							items: [
 								{
 									label: 'Lobe-Chat',
 									link: '/others/integrations/lobe-chat',
+									translations: {
+										'zh-CN': 'Lobe-Chat',
+									},
 								},
 								{
 									label: 'One API',
 									link: '/others/integrations/one-api',
+									translations: {
+										'zh-CN': 'One API',
+									},
 								}
 							]
 						},

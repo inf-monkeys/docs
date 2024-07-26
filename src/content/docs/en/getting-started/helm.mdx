@@ -1,0 +1,107 @@
+---
+title: Using Helm Chart for One-Click Installation
+description: Using Helm Chart for One-Click Installation
+---
+
+## Deployment Architecture
+
+![Deployment Architecture](~/assets/installation/helm-architecture.png)
+
+## Resource List
+
+### Helm Chart Files
+
+| Type     | Last Updated | Link                                                                                         |
+| -------- | ------------ | -------------------------------------------------------------------------------------------- |
+| Online   | -            | [https://github.com/inf-monkeys/helm-charts](https://github.com/inf-monkeys/helm-charts) |
+
+### Docker Image Addresses
+
+> Provides both compressed package and online Docker Hub versions. The compressed package version is used for deployment in offline environments. Note: **Replace the OSS address in the compressed package version with the latest Tag**. Check the corresponding DockerHub address for the latest tag.
+
+> monkeys-multi-tenancy is the multi-tenant version, which requires a commercial license. Unless you are our commercial partner, you should use the monkeys image in most cases.
+
+#### Core Services
+
+| Service Name                                      | Image Name                      | DockerHub Address                                            | OSS Download Address                                                                                                      |
+| ------------------------------------------------- | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| monkeys                                           | infmonkeys/monkeys              | https://hub.docker.com/r/infmonkeys/monkeys                  | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys/monkeys-$RELEASE_TAG.tar.gz                       |
+| monkeys-multi-tenancy (OEM Multi-Tenant Version)  | infmonkeys/monkeys-multi-tenancy| https://hub.docker.com/r/infmonkeys/monkeys-multi-tenancy    | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys/monkeys-multi-tenancy-$RELEASE_TAG.tar.gz         |
+| monkeys-ui                                        | infmonkeys/monkeys-ui           | https://hub.docker.com/r/infmonkeys/monkeys-ui               | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys-ui/monkeys-ui-$RELEASE_TAG.tar.gz                 |
+| monkeys-admin                                     | infmonkeys/monkeys-admin        | https://hub.docker.com/r/infmonkeys/monkeys-admin            | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkeys-admin/monkeys-admin-$RELEASE_TAG.tar.gz           |
+| conductor                                         | infmonkeys/conductor-oss        | https://hub.docker.com/r/infmonkeys/conductor-oss            | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/conductor-oss/conductor-oss-1.0.0.tar.gz               |
+| [one-api](https://github.com/songquanpeng/one-api)| justsong/one-api                | https://hub.docker.com/r/justsong/one-api                    | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/oneapi/one-api-latest.zip                              |
+| nginx                                             | nginx                           | https://hub.docker.com/_/nginx                               | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/nginx/nginx-latest.zip                                 |
+| busybox                                           | busybox:latest                  | https://hub.docker.com/_/busybox                             | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/busybox/busybox-latest.tar.gz                          |
+
+#### Various Tool Services
+
+| Service Name                           | Image Name                                     | DockerHub Address                                                        | OSS Download Address                                                                                                                                            |
+| -------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| monkey-tools-sandbox                   | infmonkeys/monkey-tools-sandbox                | https://hub.docker.com/r/infmonkeys/monkey-tools-sandbox                 | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-sandbox/monkey-tools-sandbox-$RELEASE_TAG.tar.gz                                   |
+| monkey-tools-knowledge-base            | infmonkeys/monkey-tools-knowledge-base         | https://hub.docker.com/r/infmonkeys/monkey-tools-knowledge-base          | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-knowledge-base/monkey-tools-knowledge-base-$RELEASE_TAG.tar.gz                     |
+| monkey-tools-BepiPred3.0-Predictor     | infmonkeys/monkey-tools-bepipred30-predictor   | https://hub.docker.com/r/infmonkeys/monkey-tools-bepipred30-predictor    | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-bepipred30-predictor/monkey-tools-bepipred30-predictor-$RELEASE_TAG.tar.gz         |
+| monkey-tools-midjourney                | infmonkeys/monkey-tools-midjourney             | https://hub.docker.com/r/infmonkeys/monkey-tools-midjourney              | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-midjourney/monkey-tools-midjourney-$RELEASE_TAG.tar.gz                             |
+| comfyui                                | infmonkeys/comfyui                             | https://hub.docker.com/r/infmonkeys/comfyui                              | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/comfyui/comfyui-$RELEASE_TAG.tar.gz                                                             |
+| monkey-tools-social-media              | infmonkeys/monkey-tools-social-media           | https://hub.docker.com/r/infmonkeys/monkey-tools-social-media            | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-social-media/monkey-tools-social-media-$RELEASE_TAG.tar.gz                         |
+| monkey-tools-internet                  | infmonkeys/monkey-tools-internet               | https://hub.docker.com/r/infmonkeys/monkey-tools-internet                | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz                                 |
+| piston (Python Sandbox)                | ghcr.io/engineer-man/piston                    | https://github.com/engineer-man/piston/pkgs/container/piston             | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/opensource/piston/piston-latest.zip                                                                     |
+
+### Python Sandbox (Optional)
+
+> Used to deploy Python Runtime in offline environments. If you are in an online environment or do not need the Python custom code feature, you can ignore this.
+
+| Version | Download Address                                                                                     |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| 3.10.0  | https://inf-monkeys.oss-cn-beijing.aliyuncs.com/docker/monkeys/piston/python-3.10.0.tar.gz          |
+
+## Deployment Steps
+
+### Step 1: Deploy Core
+
+> Core components include monkeys, monkeys-ui, and conductor, which provide core workflow capabilities and an OpenAI-compatible large language model interface.
+
+For detailed documentation, please refer to: [https://github.com/inf-monkeys/monkeys-cloud/blob/main/README_zh.md](https://github.com/inf-monkeys/monkeys-cloud/blob/main/README_zh.md)
+
+Configuration list: [https://github.com/inf-monkeys/monkeys-cloud/blob/main/CONFIGURATION_zh.md](https://github.com/inf-monkeys/monkeys-cloud/blob/main/CONFIGURATION_zh.md)
+
+Note:
+
+- Nginx is used as a reverse proxy to route requests to the monkeys frontend and backend, and the monkeys-proxy service provides external services.
+- Specify the address of the large language model in `Values.yaml` under `server.models`.
+
+### Step 2: Deploy Tools
+
+> In the Monkeys architecture, tools are pluggable components that provide different functionalities, such as sandbox tools, knowledge base tools, image processing tools, etc. You can read [this document](/docs/en/tools/build-custom-tools) to understand why developing custom tools is important.
+
+For detailed deployment documentation of each tool, please refer to: [https://github.com/inf-monkeys/monkeys-cloud/tree/main/helm/charts/community/tools](https://github.com/inf-monkeys/monkeys-cloud/tree/main/helm/charts/community/tools)
+
+### Step 3: Import Tools into Monkeys Console
+
+- Enter the console and initialize an account by entering any email address.
+- In the **Execution Tools** page, click the **Import** button in the upper right corner and enter the manifest address of the tools (format: `http://SERVICE_ADDRESS:SERVICE_PORT/manifest.json`).
+
+![Import Tool](~/assets/installation/import-tool.png)
+
+### Step 4: Verify Functionality
+
+- Each team will have two default workflows:
+  - Multi-turn conversation with a large language model
+  - Single-turn conversation with a large language model
+
+![Default Workflow](~/assets/installation/default-workflow.png)
+
+- Enter the workflow details
+  - Select a model
+  - Configure the knowledge base context (optional)
+
+![Configure Model](~/assets/installation/config-model.png)
+
+- Click the integration center in the upper right corner to see the API usage documentation
+
+![API Documentation](~/assets/installation/api-doc.png)
+
+- Copy to the command line terminal and execute:
+  - If it runs successfully, the functionality is normal
+
+![Run in Terminal](~/assets/installation/run-in-terminal.png)
